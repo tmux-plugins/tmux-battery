@@ -12,6 +12,19 @@ Battery discharging, custom discharge icon:<br/>
 Battery charging:<br/>
 ![battery charging](/screenshots/battery_charging.png)
 
+### Installation with [Tmux Plugin Manager](https://github.com/bruno-/tpm) (recommended)
+
+Add plugin to the list of TPM plugins in `.tmux.conf`:
+
+    set -g @tpm_plugins "              \
+      bruno-/tpm                       \
+      bruno-/tmux_battery_osx          \
+    "
+
+Hit `prefix + I` to fetch the plugin and source it.
+
+Battery icon and percentage should now be visible.
+
 ### Manual Installation
 
 Clone the repo:
@@ -28,19 +41,6 @@ Reload TMUX environment:
     $ tmux source-file ~/.tmux.conf
 
 You should now see battery icon and a percentage in Tmux status-right.
-
-### Installation with [Tmux Plugin Manager](https://github.com/bruno-/tpm)
-
-Add plugin to the list of TPM plugins in `.tmux.conf`:
-
-    set -g @tpm_plugins "              \
-      bruno-/tpm                       \
-      bruno-/tmux_battery_osx          \
-    "
-
-Hit `prefix + I` to fetch the plugin and source it.
-
-Battery icon and percentage should now be visible.
 
 ### Configuration
 
