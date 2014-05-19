@@ -3,6 +3,15 @@
 Displays battery percentage and an icon in Tmux status-right. Plug-n-play
 installation, enables customization.
 
+Battery full:<br/>
+![battery full](/screenshots/battery_full.png)
+
+Battery discharging, custom discharge icon:<br/>
+![battery discharging, custom icon](/screenshots/battery_discharging.png)
+
+Battery charging:<br/>
+![battery charging](/screenshots/battery_charging.png)
+
 ### Manual Installation
 
 Clone the repo:
