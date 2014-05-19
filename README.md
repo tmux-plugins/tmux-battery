@@ -78,6 +78,13 @@ Reminder: OSX allows you to insert various emojis by pressing `Cmd+Ctrl+Space`.
 Don't forget to reload TMUX environment (`$ tmux source-file ~/.tmux.conf`)
 after you do this.
 
+### Known issues
+
+- Battery icon change most likely won't be instant.<br/>
+  For example, when you un-plug power cord it will take some time (15 - 60
+  seconds) for the icon to change. This depends on the `status-interval` TMUX
+  option. Setting it to 15 seconds should be good enough.
+
 ### License
 
 [MIT](LICENSE.md)
