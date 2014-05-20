@@ -31,7 +31,7 @@ Clone the repo:
 
     $ git clone https://github.com/bruno-/tmux_battery_osx ~/clone/path
 
-Add this line to the bottom `.tmux.conf`:
+Add this line to the bottom of `.tmux.conf`:
 
     run-shell ~/clone/path/battery_osx.tmux
 
