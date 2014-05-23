@@ -1,4 +1,4 @@
-# /usr/bin/env bash
+#!/usr/bin/env bash
 
 # script global variables
 charged_icon=""

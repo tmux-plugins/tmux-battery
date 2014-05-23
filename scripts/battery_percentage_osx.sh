@@ -1,4 +1,4 @@
-# /usr/bin/env bash
+#!/usr/bin/env bash
 
 print_battery_percentage() {
     # percentage displayed in the 2nd field of the 2nd row
