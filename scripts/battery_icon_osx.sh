@@ -12,8 +12,8 @@ discharging_default=""
 # tmux show-option "q" (quiet) flag does not set return value to 1, even though
 # the option does not exist. This function patches that.
 get_tmux_option() {
-    option=$1
-    option_value=$(tmux show-option -gqv "$option")
+    local option=$1
+    local option_value=$(tmux show-option -gqv "$option")
     if [ -z $option_value ]; then
         return 1
     else
