@@ -4,8 +4,8 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 battery_percentage="#($CURRENT_DIR/scripts/battery_percentage_osx.sh)"
 battery_icon="#($CURRENT_DIR/scripts/battery_icon_osx.sh)"
-battery_percentage_interpolation="&bp"
-battery_icon_interpolation="&bi"
+battery_percentage_interpolation="\#{battery_percentage}"
+battery_icon_interpolation="\#{battery_icon}"
 
 get_status_right() {
 	local status_right=$(tmux show-option -gv status-right)
