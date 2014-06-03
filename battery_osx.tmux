@@ -7,9 +7,21 @@ battery_icon="#($CURRENT_DIR/scripts/battery_icon_osx.sh)"
 battery_percentage_interpolation="\#{battery_percentage}"
 battery_icon_interpolation="\#{battery_icon}"
 
-get_status_right() {
-	local status_right=$(tmux show-option -gv status-right)
-	echo $status_right
+get_tmux_option() {
+	local option=$1
+	local default_value=$2
+	local option_value=$(tmux show-option -gqv "$option")
+	if [ -z "$option_value" ]; then
+		echo $default_value
+	else
+		echo $option_value
+	fi
+}
+
+set_tmux_option() {
+	local option=$1
+	local value=$2
+	tmux set-option -gq "$option" "$value"
 }
 
 do_interpolation() {
@@ -19,21 +31,14 @@ do_interpolation() {
 	echo $all_interpolated
 }
 
-insert_battery_commands() {
-	local string=$1
-	if needs_batt_interpolation "$string"; then
-		do_interpolation "$string"
-	fi
-}
-
-update_tmux_status_right() {
-	local new_status=$1
-	tmux set -gq status-right "$new_status"
+update_tmux_option() {
+	local option=$1
+	local option_value=$(get_tmux_option "$option")
+	local new_option_value=$(do_interpolation "$option_value")
+	set_tmux_option "$option" "$new_option_value"
 }
 
 main() {
-	local status_right=$(get_status_right)
-	local new_status_right=$(insert_battery_commands "$status_right")
-	update_tmux_status_right "$new_status_right"
+	update_tmux_option "status-right"
 }
 main
