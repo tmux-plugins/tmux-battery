@@ -85,6 +85,20 @@ after you do this.
   seconds) for the icon to change. This depends on the `status-interval` TMUX
   option. Setting it to 15 seconds should be good enough.
 
+### Other plugins
+
+You might also find these useful:
+
+- [pain control](https://github.com/bruno-/tmux_pain_control) - useful standard
+  bindings for controlling panes
+- [goto session](https://github.com/bruno-/tmux_goto_session) - faster session
+  switching
+- [logging](https://github.com/bruno-/tmux_logging) - easy logging and
+  screen capturing
+- [online status](https://github.com/bruno-/tmux_online_status) - online status
+  indicator in Tmux `status-right`. Useful when on flaky connection to see if
+  you're online.
+
 ### License
 
 [MIT](LICENSE.md)
