@@ -12,29 +12,17 @@ get_status_right() {
 	echo $status_right
 }
 
-# checks if any interpolation string exists.
-needs_batt_interpolation() {
-	local string=$1
-	[[ "$string" =~ ($battery_percentage_interpolation|$battery_icon_interpolation) ]]
-}
-
 do_interpolation() {
 	local string=$1
 	local percentage_interpolated=${string/$battery_percentage_interpolation/$battery_percentage}
 	local all_interpolated=${percentage_interpolated/$battery_icon_interpolation/$battery_icon}
 	echo $all_interpolated
 }
-# If the `status-right` tmux option contains battery percentage or icon
-# interpolation string, it is substituted with a battery command.
-# If there's no interpolation string at all, battery command is prepended to
-# the `status-right` option.
+
 insert_battery_commands() {
 	local string=$1
 	if needs_batt_interpolation "$string"; then
 		do_interpolation "$string"
-	else
-		# prepend battery_command to the 'status-right'
-		echo "$battery_icon$battery_percentage $string"
 	fi
 }
 
