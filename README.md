@@ -1,7 +1,6 @@
 # Tmux battery status for OSX
 
-Displays battery percentage and an icon in Tmux status-right. Plug-n-play
-installation, enables customization.
+Enables displaying battery percentage and status icon in Tmux status-right.
 
 Battery full:<br/>
 ![battery full](/screenshots/battery_full.png)
@@ -11,6 +10,20 @@ Battery discharging, custom discharge icon:<br/>
 
 Battery charging:<br/>
 ![battery charging](/screenshots/battery_charging.png)
+
+This is done by introducing 2 new format strings that can be added to
+`status-right` option:
+- `#{battery_icon}` - will display a battery status icon
+- `#{battery_percentage}` - will show battery percentage
+
+### Usage
+
+Add `#{battery_icon}` or `#{battery_percentage}` format strings to existing
+`status-right` Tmux option.
+
+Example:
+
+    set -g status-right "Batt: #{battery_icon} #{battery_percentage} | %a %h-%d %H:%M "
 
 ### Installation with [Tmux Plugin Manager](https://github.com/bruno-/tpm) (recommended)
 
@@ -23,7 +36,7 @@ Add plugin to the list of TPM plugins in `.tmux.conf`:
 
 Hit `prefix + I` to fetch the plugin and source it.
 
-Battery icon and percentage should now be visible.
+If format strings are added to `status-right`, they should now be visible.
 
 ### Manual Installation
 
@@ -40,23 +53,7 @@ Reload TMUX environment:
     # type this in terminal
     $ tmux source-file ~/.tmux.conf
 
-You should now see battery icon and a percentage in Tmux status-right.
-
-### Configuration
-
-By default `tmux_battery_osx` just adds battery icon and percentage to the
-beginning of Tmux status-right.
-
-If you want to customize the display, 2 new "interpolation values" are added:
-
- - `&bp` - this string in 'status-right' will display battery percentage
- - `&bi` - will display battery icon
-
-Examples:
-
-    set -g status-right "icon: &bi percentage: &bp"
-    # or
-    set -g status-right "Batt: &bi &bp | %a %h-%d %H:%M "
+If format strings are added to `status-right`, they should now be visible.
 
 ### Changing icons
 
