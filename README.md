@@ -19,10 +19,9 @@ This is done by introducing 2 new format strings that can be added to
 ### Usage
 
 Add `#{battery_icon}` or `#{battery_percentage}` format strings to existing
-`status-right` Tmux option.
+`status-right` Tmux option. Example:
 
-Example:
-
+    # in .tmux.conf
     set -g status-right "Batt: #{battery_icon} #{battery_percentage} | %a %h-%d %H:%M "
 
 ### Installation with [Tmux Plugin Manager](https://github.com/bruno-/tpm) (recommended)
