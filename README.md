@@ -24,13 +24,13 @@ Add `#{battery_icon}` or `#{battery_percentage}` format strings to existing
     # in .tmux.conf
     set -g status-right "Batt: #{battery_icon} #{battery_percentage} | %a %h-%d %H:%M "
 
-### Installation with [Tmux Plugin Manager](https://github.com/bruno-/tpm) (recommended)
+### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
 
 Add plugin to the list of TPM plugins in `.tmux.conf`:
 
-    set -g @tpm_plugins "              \
-      bruno-/tpm                       \
-      bruno-/tmux_battery_osx          \
+    set -g @tpm_plugins "                 \
+      tmux-plugins/tpm                    \
+      tmux-plugins/tmux-battery-osx       \
     "
 
 Hit `prefix + I` to fetch the plugin and source it.
@@ -41,7 +41,7 @@ If format strings are added to `status-right`, they should now be visible.
 
 Clone the repo:
 
-    $ git clone https://github.com/bruno-/tmux_battery_osx ~/clone/path
+    $ git clone https://github.com/tmux-plugins/tmux-battery-osx ~/clone/path
 
 Add this line to the bottom of `.tmux.conf`:
 
@@ -85,13 +85,9 @@ after you do this.
 
 You might also find these useful:
 
-- [pain control](https://github.com/bruno-/tmux_pain_control) - useful standard
-  bindings for controlling panes
-- [goto session](https://github.com/bruno-/tmux_goto_session) - faster session
-  switching
-- [logging](https://github.com/bruno-/tmux_logging) - easy logging and
+- [logging](https://github.com/tmux-plugins/tmux-logging) - easy logging and
   screen capturing
-- [online status](https://github.com/bruno-/tmux_online_status) - online status
+- [online status](https://github.com/tmux-plugins/tmux-online-status) - online status
   indicator in Tmux `status-right`. Useful when on flaky connection to see if
   you're online.
 
