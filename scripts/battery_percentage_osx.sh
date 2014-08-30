@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
-command_exists() {
-	local command="$1"
-	type "$command" >/dev/null 2>&1
-}
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source "$CURRENT_DIR/helpers.sh"
 
 print_battery_percentage() {
 	# percentage displayed in the 2nd field of the 2nd row
