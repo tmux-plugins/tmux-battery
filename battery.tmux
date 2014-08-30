@@ -4,8 +4,8 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source "$CURRENT_DIR/scripts/helpers.sh"
 
-battery_percentage="#($CURRENT_DIR/scripts/battery_percentage_osx.sh)"
-battery_icon="#($CURRENT_DIR/scripts/battery_icon_osx.sh)"
+battery_percentage="#($CURRENT_DIR/scripts/battery_percentage.sh)"
+battery_icon="#($CURRENT_DIR/scripts/battery_icon.sh)"
 battery_percentage_interpolation="\#{battery_percentage}"
 battery_icon_interpolation="\#{battery_icon}"
 

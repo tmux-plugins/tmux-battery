@@ -1,4 +1,4 @@
-# Tmux battery status for OSX
+# Tmux battery status
 
 Enables displaying battery percentage and status icon in Tmux status-right.
 
@@ -28,9 +28,9 @@ Add `#{battery_icon}` or `#{battery_percentage}` format strings to existing
 
 Add plugin to the list of TPM plugins in `.tmux.conf`:
 
-    set -g @tpm_plugins "                 \
-      tmux-plugins/tpm                    \
-      tmux-plugins/tmux-battery-osx       \
+    set -g @tpm_plugins "             \
+      tmux-plugins/tpm                \
+      tmux-plugins/tmux-battery       \
     "
 
 Hit `prefix + I` to fetch the plugin and source it.
@@ -41,11 +41,11 @@ If format strings are added to `status-right`, they should now be visible.
 
 Clone the repo:
 
-    $ git clone https://github.com/tmux-plugins/tmux-battery-osx ~/clone/path
+    $ git clone https://github.com/tmux-plugins/tmux-battery ~/clone/path
 
 Add this line to the bottom of `.tmux.conf`:
 
-    run-shell ~/clone/path/battery_osx.tmux
+    run-shell ~/clone/path/battery.tmux
 
 Reload TMUX environment:
 
@@ -58,7 +58,7 @@ If format strings are added to `status-right`, they should now be visible.
 
 By default, these icons are displayed:
 
- - charged: ":battery:"
+ - charged: ":battery:" ("❇ " when not on OS X)
  - charging: ":zap:"
  - discharging: (nothing shown)
 
@@ -69,17 +69,15 @@ following lines are not in the code block so that emojis can be seen):
  - set-option -g @batt_charging_icon ":+1:"
  - set-option -g @batt_discharging_icon ":thumbsdown:"
 
-Reminder: OSX allows you to insert various emojis by pressing `Cmd+Ctrl+Space`.
-
 Don't forget to reload TMUX environment (`$ tmux source-file ~/.tmux.conf`)
 after you do this.
 
-### Known issues
+### Limitations
 
 - Battery icon change most likely won't be instant.<br/>
-  For example, when you un-plug power cord it will take some time (15 - 60
-  seconds) for the icon to change. This depends on the `status-interval` TMUX
-  option. Setting it to 15 seconds should be good enough.
+  When you un-plug power cord it will take some time (15 - 60 seconds) for the
+  icon to change. This depends on the `status-interval` TMUX option. Setting it
+  to 15 seconds should be good enough.
 
 ### Other plugins
 
