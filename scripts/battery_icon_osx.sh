@@ -6,8 +6,9 @@ charging_icon=""
 discharging_icon=""
 
 charged_default="❇ "
+charged_default_osx="🔋 "
 charging_default="⚡️ "
-discharging_default="⬇ "
+discharging_default=""
 
 # tmux show-option "q" (quiet) flag does not set return value to 1, even though
 # the option does not exist. This function patches that.
@@ -21,9 +22,21 @@ get_tmux_option() {
 	fi
 }
 
+is_osx() {
+	[ $(uname) == "Darwin" ]
+}
+
+charged_default() {
+	if is_osx; then
+		echo "$charged_default_osx"
+	else
+		echo "$charged_default"
+	fi
+}
+
 # icons are set as script global variables
 get_icon_settings() {
-	charged_icon=$(get_tmux_option "@batt_charged_icon" || echo "$charged_default")
+	charged_icon=$(get_tmux_option "@batt_charged_icon" || echo "$(charged_default)")
 	charging_icon=$(get_tmux_option "@batt_charging_icon" || echo "$charging_default")
 	discharging_icon=$(get_tmux_option "@batt_discharging_icon" || echo "$discharging_default")
 }
