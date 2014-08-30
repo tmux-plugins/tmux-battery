@@ -28,14 +28,24 @@ get_icon_settings() {
 	discharging_icon=$(get_tmux_option "@batt_discharging_icon" || echo "$discharging_default")
 }
 
+command_exists() {
+	local command="$1"
+	type "$command" >/dev/null 2>&1
+}
+
 battery_status() {
 	# "charged", "charging" or "discharging" is the 3rd field on the second line
-	pmset -g batt | awk 'NR==2 { print $3 }'
+	if command_exists "pmset"; then
+		pmset -g batt | awk 'NR==2 { print $3 }'
+	elif command_exists "upower"; then
+		battery=$(upower -e | grep battery | head -1)
+		upower -i $battery | grep state | awk '{print $2}'
+	fi
 }
 
 print_icon() {
 	local status=$1
-	if [[ $status =~ (^charged) ]]; then
+	if [[ $status =~ (charged) ]]; then
 		printf "$charged_icon"
 	elif [[ $status =~ (^charging) ]]; then
 		printf "$charging_icon"
