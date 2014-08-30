@@ -2,7 +2,7 @@
 
 Enables displaying battery percentage and status icon in Tmux status-right.
 
-Battery full:<br/>
+Battery full (for OS X):<br/>
 ![battery full](/screenshots/battery_full.png)
 
 Battery discharging, custom discharge icon:<br/>
@@ -88,6 +88,10 @@ You might also find these useful:
 - [online status](https://github.com/tmux-plugins/tmux-online-status) - online status
   indicator in Tmux `status-right`. Useful when on flaky connection to see if
   you're online.
+
+### Contributors
+
+- [@jgeralnik](https://github.com/jgeralnik)
 
 ### License
 
