@@ -1,6 +1,8 @@
 # Changelog
 
 ### master
+
+### v1.0.0, 2014-08-31
 - update readme to reflect github organization change
 - bring in linux support
 - small refactoring
