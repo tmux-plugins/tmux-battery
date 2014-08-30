@@ -5,9 +5,9 @@ charged_icon=""
 charging_icon=""
 discharging_icon=""
 
-charged_default="🔋 "
+charged_default="❇ "
 charging_default="⚡️ "
-discharging_default=""
+discharging_default="⬇ "
 
 # tmux show-option "q" (quiet) flag does not set return value to 1, even though
 # the option does not exist. This function patches that.
