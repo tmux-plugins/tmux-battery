@@ -5,19 +5,19 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/scripts/helpers.sh"
 
 battery_commands=(
-    "#($CURRENT_DIR/scripts/battery_percentage.sh)"
-    "#($CURRENT_DIR/scripts/battery_icon.sh)"
-    "#($CURRENT_DIR/scripts/battery_prefix.sh)"
-    "#($CURRENT_DIR/scripts/battery_suffix.sh)"
-    "#($CURRENT_DIR/scripts/battery_graph.sh)"
+	"#($CURRENT_DIR/scripts/battery_percentage.sh)"
+	"#($CURRENT_DIR/scripts/battery_icon.sh)"
+	"#($CURRENT_DIR/scripts/battery_prefix.sh)"
+	"#($CURRENT_DIR/scripts/battery_suffix.sh)"
+	"#($CURRENT_DIR/scripts/battery_graph.sh)"
 )
 
 battery_interpolation=(
-    "\#{battery_percentage}"
-    "\#{battery_icon}"
-    "\#{battery_prefix}"
-    "\#{battery_suffix}"
-    "\#{battery_graph}"
+	"\#{battery_percentage}"
+	"\#{battery_icon}"
+	"\#{battery_prefix}"
+	"\#{battery_suffix}"
+	"\#{battery_graph}"
 )
 
 set_tmux_option() {
@@ -28,9 +28,9 @@ set_tmux_option() {
 
 do_interpolation() {
 	local string=$1
-    for i in $(seq 0 $((${#battery_commands[@]}-1))); do
-	    string=${string/${battery_interpolation[$i]}/${battery_commands[$i]}}
-    done
+	for i in $(seq 0 $((${#battery_commands[@]}-1))); do
+		string=${string/${battery_interpolation[$i]}/${battery_commands[$i]}}
+	done
 	echo $string
 }
 

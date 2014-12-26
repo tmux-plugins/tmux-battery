@@ -31,18 +31,18 @@ get_thresh_settings() {
 }
 
 print_thresholds() {
-    if [ "$1" -lt "$crit_value" ]; then
-        echo $crit_prefix
-    elif [ "$1" -lt "$warn_value" ]; then
-        echo $warn_prefix
-    else
-        echo $ok_prefix
-    fi
+	if [ "$1" -lt "$crit_value" ]; then
+		echo $crit_prefix
+	elif [ "$1" -lt "$warn_value" ]; then
+		echo $warn_prefix
+	else
+		echo $ok_prefix
+	fi
 }
 
 main() {
-    get_thresh_settings
-    local percentage=$($CURRENT_DIR/battery_percentage.sh)
-    print_thresholds ${percentage%?}
+	get_thresh_settings
+	local percentage=$($CURRENT_DIR/battery_percentage.sh)
+	print_thresholds ${percentage%?}
 }
 main
