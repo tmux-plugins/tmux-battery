@@ -28,7 +28,7 @@ set_tmux_option() {
 
 do_interpolation() {
 	local string=$1
-    for((i=0;i<${#battery_commands[@]};i++)); do
+	for((i=0;i<${#battery_commands[@]};i++)); do
 		string=${string/${battery_interpolation[$i]}/${battery_commands[$i]}}
 	done
 	echo $string
