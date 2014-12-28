@@ -22,12 +22,12 @@ ok_suffix_default="#[fg=default]"
 
 # get settings from tmux config
 get_thresh_settings() {
-	crit_value=$(get_tmux_option "@batt_thresh_crit" "$crit_value_default")
-	warn_value=$(get_tmux_option "@batt_thresh_warn" "$warn_value_default")
+	crit_value=$(get_tmux_option "@batt_crit_thresh" "$crit_value_default")
+	warn_value=$(get_tmux_option "@batt_warn_thresh" "$warn_value_default")
 
-	crit_suffix=$(get_tmux_option "@batt_thresh_crit_suffix" "$crit_suffix_default")
-	warn_suffix=$(get_tmux_option "@batt_thresh_warn_suffix" "$warn_suffix_default")
-	ok_suffix=$(get_tmux_option "@batt_thresh_ok_suffix" "$ok_suffix_default")
+	crit_suffix=$(get_tmux_option "@batt_crit_suffix" "$crit_suffix_default")
+	warn_suffix=$(get_tmux_option "@batt_warn_suffix" "$warn_suffix_default")
+	ok_suffix=$(get_tmux_option "@batt_ok_suffix" "$ok_suffix_default")
 }
 
 print_thresholds() {

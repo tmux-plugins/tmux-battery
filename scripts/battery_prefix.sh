@@ -22,12 +22,12 @@ ok_prefix_default="#[fg=green]"
 
 # get settings from tmux config
 get_thresh_settings() {
-	crit_value=$(get_tmux_option "@batt_thresh_crit" "$crit_value_default")
-	warn_value=$(get_tmux_option "@batt_thresh_warn" "$warn_value_default")
+	crit_value=$(get_tmux_option "@batt_crit_thresh" "$crit_value_default")
+	warn_value=$(get_tmux_option "@batt_warn_thresh" "$warn_value_default")
 
-	crit_prefix=$(get_tmux_option "@batt_thresh_crit_prefix" "$crit_prefix_default")
-	warn_prefix=$(get_tmux_option "@batt_thresh_warn_prefix" "$warn_prefix_default")
-	ok_prefix=$(get_tmux_option "@batt_thresh_ok_prefix" "$ok_prefix_default")
+	crit_prefix=$(get_tmux_option "@batt_crit_prefix" "$crit_prefix_default")
+	warn_prefix=$(get_tmux_option "@batt_warn_prefix" "$warn_prefix_default")
+	ok_prefix=$(get_tmux_option "@batt_ok_prefix" "$ok_prefix_default")
 }
 
 print_thresholds() {
