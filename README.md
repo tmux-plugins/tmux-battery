@@ -61,6 +61,7 @@ By default, these icons are displayed:
  - charged: ":battery:" ("❇ " when not on OS X)
  - charging: ":zap:"
  - discharging: (nothing shown)
+ - attached but not charging: ":snail:"
 
 You can change these defaults by adding the following to `.tmux.conf` (the
 following lines are not in the code block so that emojis can be seen):
@@ -68,6 +69,7 @@ following lines are not in the code block so that emojis can be seen):
  - set-option -g @batt_charged_icon ":sunglasses:"
  - set-option -g @batt_charging_icon ":+1:"
  - set-option -g @batt_discharging_icon ":thumbsdown:"
+ - set-option -g @batt_attached_icon ":neutral_face:"
 
 Don't forget to reload TMUX environment (`$ tmux source-file ~/.tmux.conf`)
 after you do this.
@@ -92,6 +94,7 @@ You might also find these useful:
 ### Contributors
 
 - [@jgeralnik](https://github.com/jgeralnik)
+- [@m1foley](https://github.com/m1foley)
 
 ### License
 
