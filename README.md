@@ -61,7 +61,7 @@ By default, these icons are displayed:
  - charged: ":battery:" ("❇ " when not on OS X)
  - charging: ":zap:"
  - discharging: (nothing shown)
- - attached but not charging: ":snail:"
+ - attached but not charging: ":warning:"
 
 You can change these defaults by adding the following to `.tmux.conf` (the
 following lines are not in the code block so that emojis can be seen):

@@ -1,6 +1,7 @@
 # Changelog
 
 ### master
+- change the default icon for "attached" battery state from :snail: to :warning:
 - add support for OS X "attached" battery state (@m1foley)
 
 ### v1.0.0, 2014-08-31

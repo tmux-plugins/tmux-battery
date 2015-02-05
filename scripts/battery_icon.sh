@@ -13,7 +13,7 @@ discharging_icon=""
 charged_default="❇ "
 charged_default_osx="🔋 "
 charging_default="⚡️ "
-attached_default="🐌 "
+attached_default="⚠️ "
 discharging_default=""
 
 charged_default() {
