@@ -1,6 +1,7 @@
 # Changelog
 
 ### master
+- add support for OS X "attached" battery state (@m1foley)
 
 ### v1.0.0, 2014-08-31
 - update readme to reflect github organization change
