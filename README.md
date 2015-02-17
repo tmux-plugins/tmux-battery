@@ -11,10 +11,14 @@ Battery discharging, custom discharge icon:<br/>
 Battery charging:<br/>
 ![battery charging](/screenshots/battery_charging.png)
 
+Battery remain:<br/>
+![battery remain](/screenshots/battery_remain.png)
+
 This is done by introducing 2 new format strings that can be added to
 `status-right` option:
 - `#{battery_icon}` - will display a battery status icon
 - `#{battery_percentage}` - will show battery percentage
+- `#{battery_remain}` - will show remaining time of battery charge
 
 ### Usage
 
