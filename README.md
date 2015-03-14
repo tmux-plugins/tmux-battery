@@ -1,6 +1,6 @@
 # Tmux battery status
 
-Enables displaying battery percentage and status icon in Tmux status-right.
+Enables displaying battery percentage and status icon in tmux status-right.
 
 Battery full (for OS X):<br/>
 ![battery full](/screenshots/battery_full.png)
@@ -14,7 +14,7 @@ Battery charging:<br/>
 Battery remain:<br/>
 ![battery remain](/screenshots/battery_remain.png)
 
-This is done by introducing 2 new format strings that can be added to
+This is done by introducing 3 new format strings that can be added to
 `status-right` option:
 - `#{battery_icon}` - will display a battery status icon
 - `#{battery_percentage}` - will show battery percentage
@@ -22,20 +22,20 @@ This is done by introducing 2 new format strings that can be added to
 
 ### Usage
 
-Add `#{battery_icon}` or `#{battery_percentage}` format strings to existing
-`status-right` Tmux option. Example:
+Add `#{battery_icon}`, `#{battery_percentage}` or `#{battery_remain}` format
+strings to existing `status-right` tmux option. Example:
 
     # in .tmux.conf
-    set -g status-right "Batt: #{battery_icon} #{battery_percentage} | %a %h-%d %H:%M "
+    set -g status-right 'Batt: #{battery_icon} #{battery_percentage} #{battery_remain} | %a %h-%d %H:%M '
 
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
 
 Add plugin to the list of TPM plugins in `.tmux.conf`:
 
-    set -g @tpm_plugins "             \
+    set -g @tpm_plugins '             \
       tmux-plugins/tpm                \
       tmux-plugins/tmux-battery       \
-    "
+    '
 
 Hit `prefix + I` to fetch the plugin and source it.
 
@@ -70,35 +70,41 @@ By default, these icons are displayed:
 You can change these defaults by adding the following to `.tmux.conf` (the
 following lines are not in the code block so that emojis can be seen):
 
- - set-option -g @batt_charged_icon ":sunglasses:"
- - set-option -g @batt_charging_icon ":+1:"
- - set-option -g @batt_discharging_icon ":thumbsdown:"
- - set-option -g @batt_attached_icon ":neutral_face:"
+ - set -g @batt_charged_icon ":sunglasses:"
+ - set -g @batt_charging_icon ":+1:"
+ - set -g @batt_discharging_icon ":thumbsdown:"
+ - set -g @batt_attached_icon ":neutral_face:"
 
-Don't forget to reload TMUX environment (`$ tmux source-file ~/.tmux.conf`)
+Don't forget to reload tmux environment (`$ tmux source-file ~/.tmux.conf`)
 after you do this.
 
 ### Limitations
 
 - Battery icon change most likely won't be instant.<br/>
   When you un-plug power cord it will take some time (15 - 60 seconds) for the
-  icon to change. This depends on the `status-interval` TMUX option. Setting it
+  icon to change. This depends on the `status-interval` tmux option. Setting it
   to 15 seconds should be good enough.
 
-### Other plugins
+### Other goodies
 
 You might also find these useful:
 
+- [resurrect](https://github.com/tmux-plugins/tmux-resurrect) - restore tmux
+  environment after system restart
 - [logging](https://github.com/tmux-plugins/tmux-logging) - easy logging and
   screen capturing
 - [online status](https://github.com/tmux-plugins/tmux-online-status) - online status
-  indicator in Tmux `status-right`. Useful when on flaky connection to see if
+  indicator in tmux `status-right`. Useful when on flaky connection to see if
   you're online.
+
+You might want to follow [@brunosutic](https://twitter.com/brunosutic) on
+twitter if you want to hear about new tmux plugins or feature updates.
 
 ### Contributors
 
 - [@jgeralnik](https://github.com/jgeralnik)
 - [@m1foley](https://github.com/m1foley)
+- [@asethwright](https://github.com/asethwright)
 
 ### License
 
