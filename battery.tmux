@@ -5,8 +5,10 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/scripts/helpers.sh"
 
 battery_percentage="#($CURRENT_DIR/scripts/battery_percentage.sh)"
+battery_remain="#($CURRENT_DIR/scripts/battery_remain.sh)"
 battery_icon="#($CURRENT_DIR/scripts/battery_icon.sh)"
 battery_percentage_interpolation="\#{battery_percentage}"
+battery_remain_interpolation="\#{battery_remain}"
 battery_icon_interpolation="\#{battery_icon}"
 
 set_tmux_option() {
@@ -18,7 +20,8 @@ set_tmux_option() {
 do_interpolation() {
 	local string=$1
 	local percentage_interpolated=${string/$battery_percentage_interpolation/$battery_percentage}
-	local all_interpolated=${percentage_interpolated/$battery_icon_interpolation/$battery_icon}
+	local remain_interpolated=${percentage_interpolated/$battery_remain_interpolation/$battery_remain}
+	local all_interpolated=${remain_interpolated/$battery_icon_interpolation/$battery_icon}
 	echo $all_interpolated
 }
 
