@@ -3,6 +3,8 @@
 ### master
 - show output for `#{battery_remain}` interpolation only if the battery is
   discharging
+- prevent displaying "(No" for `#{battery_remain}` interpolation (when battery
+  status is "No estimate"
 
 ### v1.1.0, 2015-03-14
 - change the default icon for "attached" battery state from :snail: to :warning:

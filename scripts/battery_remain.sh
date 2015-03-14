@@ -9,9 +9,17 @@ battery_discharging() {
 	[[ $status =~ (discharging) ]]
 }
 
+pmset_battery_remaining_time() {
+	local output="$(pmset -g batt | awk 'NR==2 { gsub(/;/,""); print $4 }')"
+	# output has to match format "10:42"
+	if [[ "$output" =~ ([[:digit:]]{1,2}:[[:digit:]]{2}) ]]; then
+		printf "$output"
+	fi
+}
+
 print_battery_remain() {
 	if command_exists "pmset"; then
-		pmset -g batt | awk 'NR==2 { gsub(/;/,""); print $4 }'
+		pmset_battery_remaining_time
 	elif command_exists "upower"; then
 		battery=$(upower -e | grep battery | head -1)
 		upower -i $battery | grep remain | awk '{print $4}'
