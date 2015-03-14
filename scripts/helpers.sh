@@ -22,7 +22,9 @@ battery_status() {
 	if command_exists "pmset"; then
 		pmset -g batt | awk -F '; *' 'NR==2 { print $2 }'
 	elif command_exists "upower"; then
-		battery=$(upower -e | grep battery | head -1)
-		upower -i $battery | grep state | awk '{print $2}'
+		# sort order: attached, charging, discharging
+		for battery in $(upower -e | grep battery); do
+			upower -i $battery | grep state | awk '{print $2}'
+		done | sort | head -1
 	fi
 }

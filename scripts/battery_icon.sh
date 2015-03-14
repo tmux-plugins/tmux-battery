@@ -32,17 +32,6 @@ get_icon_settings() {
 	discharging_icon=$(get_tmux_option "@batt_discharging_icon" "$discharging_default")
 }
 
-battery_status() {
-	if command_exists "pmset"; then
-		pmset -g batt | awk -F '; *' 'NR==2 { print $2 }'
-	elif command_exists "upower"; then
-		# sort order: attached, charging, discharging
-		for battery in $(upower -e | grep battery); do
-			upower -i $battery | grep state | awk '{print $2}'
-		done | sort | head -1
-	fi
-}
-
 print_icon() {
 	local status=$1
 	if [[ $status =~ (charged) ]]; then
