@@ -26,5 +26,7 @@ battery_status() {
 		for battery in $(upower -e | grep battery); do
 			upower -i $battery | grep state | awk '{print $2}'
 		done | sort | head -1
+	elif command_exists "acpi"; then
+		acpi -b | grep -oi 'discharging' | awk '{print tolower($0)}'
 	fi
 }

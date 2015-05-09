@@ -23,6 +23,8 @@ print_battery_remain() {
 	elif command_exists "upower"; then
 		battery=$(upower -e | grep battery | head -1)
 		upower -i $battery | grep remain | awk '{print $4}'
+	elif command_exists "acpi"; then
+		acpi -b | grep -Eo "[0-9]+:[0-9]+:[0-9]+"
 	fi
 }
 
