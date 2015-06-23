@@ -106,6 +106,7 @@ twitter if you want to hear about new tmux plugins or feature updates.
 - [@m1foley](https://github.com/m1foley)
 - [@asethwright](https://github.com/asethwright)
 - [@JanAhrens](https://github.com/JanAhrens)
+- [@m42e](https://github.com/m42e)
 
 ### License
 

@@ -18,13 +18,17 @@ pmset_battery_remaining_time() {
 }
 
 print_battery_remain() {
-	if command_exists "pmset"; then
-		pmset_battery_remaining_time
-	elif command_exists "upower"; then
-		battery=$(upower -e | grep battery | head -1)
-		upower -i $battery | grep remain | awk '{print $4}'
-	elif command_exists "acpi"; then
-		acpi -b | grep -Eo "[0-9]+:[0-9]+:[0-9]+"
+	if is_cygwin; then
+		wimc_get_Battery EstimatedRuntime | awk '{print int($1/60) ":" $1%60}'
+	else
+		if command_exists "pmset"; then
+			pmset_battery_remaining_time
+		elif command_exists "upower"; then
+			battery=$(upower -e | grep battery | head -1)
+			upower -i $battery | grep remain | awk '{print $4}'
+		elif command_exists "acpi"; then
+			acpi -b | grep -Eo "[0-9]+:[0-9]+:[0-9]+"
+		fi
 	fi
 }
 
