@@ -8,6 +8,7 @@
 - display all batteries that upower knows about (@JanAhrens)
 - acpi battery status (@cpb)
 - fix issue with status-right and status-left whitespace being cut out
+- Added possibility to highlight percentage if threshold is reached
 
 ### v1.1.0, 2015-03-14
 - change the default icon for "attached" battery state from :snail: to :warning:

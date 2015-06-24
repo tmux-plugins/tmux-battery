@@ -18,6 +18,12 @@ print_battery_percentage() {
 }
 
 main() {
-	print_battery_percentage
+	hlevel=$(get_tmux_option "@batt_highlightlevel" "0")
+	hcolor="default"
+	if [[ `print_battery_percentage | sed -e 's/%//g'` -lt $hlevel ]];then
+		hcolor=$(get_tmux_option "@batt_highlightcolor" "default")
+	fi
+	value=$(print_battery_percentage)
+	echo "#[fg=$hcolor]$value#[fg=default]"
 }
 main
