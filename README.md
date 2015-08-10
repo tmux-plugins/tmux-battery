@@ -32,10 +32,7 @@ strings to existing `status-right` tmux option. Example:
 
 Add plugin to the list of TPM plugins in `.tmux.conf`:
 
-    set -g @tpm_plugins '             \
-      tmux-plugins/tpm                \
-      tmux-plugins/tmux-battery       \
-    '
+    set -g @plugin 'tmux-plugins/tmux-battery'
 
 Hit `prefix + I` to fetch the plugin and source it.
 
