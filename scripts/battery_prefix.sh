@@ -32,11 +32,11 @@ get_thresh_settings() {
 
 print_thresholds() {
 	if [ "$1" -lt "$crit_value" ]; then
-		echo $crit_prefix
+		echo "$crit_prefix"
 	elif [ "$1" -lt "$warn_value" ]; then
-		echo $warn_prefix
+		echo "$warn_prefix"
 	else
-		echo $ok_prefix
+		echo "$ok_prefix"
 	fi
 }
 

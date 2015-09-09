@@ -6,6 +6,7 @@ source "$CURRENT_DIR/scripts/helpers.sh"
 
 battery_commands=(
 	"#($CURRENT_DIR/scripts/battery_percentage.sh)"
+	"#($CURRENT_DIR/scripts/battery_remain.sh)"
 	"#($CURRENT_DIR/scripts/battery_icon.sh)"
 	"#($CURRENT_DIR/scripts/battery_prefix.sh)"
 	"#($CURRENT_DIR/scripts/battery_suffix.sh)"
@@ -14,6 +15,7 @@ battery_commands=(
 
 battery_interpolation=(
 	"\#{battery_percentage}"
+	"\#{battery_remain}"
 	"\#{battery_icon}"
 	"\#{battery_prefix}"
 	"\#{battery_suffix}"
@@ -21,23 +23,23 @@ battery_interpolation=(
 )
 
 set_tmux_option() {
-	local option=$1
-	local value=$2
+	local option="$1"
+	local value="$2"
 	tmux set-option -gq "$option" "$value"
 }
 
 do_interpolation() {
-	local string=$1
+	local string="$1"
 	for((i=0;i<${#battery_commands[@]};i++)); do
 		string=${string/${battery_interpolation[$i]}/${battery_commands[$i]}}
 	done
-	echo $string
+	echo "$string"
 }
 
 update_tmux_option() {
-	local option=$1
-	local option_value=$(get_tmux_option "$option")
-	local new_option_value=$(do_interpolation "$option_value")
+	local option="$1"
+	local option_value="$(get_tmux_option "$option")"
+	local new_option_value="$(do_interpolation "$option_value")"
 	set_tmux_option "$option" "$new_option_value"
 }
 
