@@ -5,17 +5,17 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/helpers.sh"
 
 print_graph() {
-    if [ "$1" -lt "20" ]; then
-        echo "▁"
-    elif [ "$1" -lt "40" ]; then
-        echo "▂"
-    elif [ "$1" -lt "60" ]; then
-        echo "▃"
-    elif [ "$1" -lt "80" ]; then
-        echo "▅"
-    else
-        echo "▇"
-    fi
+	if [ "$1" -lt "20" ]; then
+		echo "▁"
+	elif [ "$1" -lt "40" ]; then
+		echo "▂"
+	elif [ "$1" -lt "60" ]; then
+		echo "▃"
+	elif [ "$1" -lt "80" ]; then
+		echo "▅"
+	else
+		echo "▇"
+	fi
 }
 
 main() {
