@@ -10,7 +10,7 @@ print_battery_percentage() {
 		pmset -g batt | awk 'NR==2 { gsub(/;/,""); print $2 }'
 	elif command_exists "upower"; then
 		for battery in $(upower -e | grep battery); do
-			upower -i $battery | grep percentage | awk '{print $2}'
+			upower -i $battery | grep percentage | awk '{printf "%d", $2}'
 		done | xargs echo
 	elif command_exists "acpi"; then
 		acpi -b | grep -Eo "[0-9]+%"
