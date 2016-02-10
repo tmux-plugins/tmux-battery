@@ -13,6 +13,16 @@ is_osx() {
 	[ $(uname) == "Darwin" ]
 }
 
+is_chrome() {
+  chrome="/home/.shadow*"
+  path=$(df -Phk $HOME/Downloads | tail -1 | awk '{print $1}')
+  if [[ $path == $chrome ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
 command_exists() {
 	local command="$1"
 	type "$command" >/dev/null 2>&1
