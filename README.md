@@ -28,6 +28,14 @@ strings to existing `status-right` tmux option. Example:
     # in .tmux.conf
     set -g status-right 'Batt: #{battery_icon} #{battery_percentage} #{battery_remain} | %a %h-%d %H:%M '
 
+Optionally, add `#{battery_status_bg}` to the `status-right` tmux option to display
+colors corresponding to the battery percentage:
+
+    # in .tmux.conf
+    set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percentage} #{battery_remain} | %a %h-%d %H:%M '
+
+![battery_status_bg_yellow](/screenshots/battery_status_bg_yellow.png)
+
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
 
 Add plugin to the list of TPM plugins in `.tmux.conf`:
