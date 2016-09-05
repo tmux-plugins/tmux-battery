@@ -23,6 +23,9 @@ Battery between 99% and 51% charged:<br/>
 Battery between 50% and 16% charged:<br/>
 ![battery_status_bg_orange](/screenshots/battery_status_bg_orange.png)
 
+Battery between 15% and dead:<br/>
+![battery_status_bg_red](/screenshots/battery_status_bg_red.png)
+
 This is done by introducing 3 new format strings that can be added to
 `status-right` option:
 - `#{battery_icon}` - will display a battery status icon
