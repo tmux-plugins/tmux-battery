@@ -14,6 +14,9 @@ Battery charging:<br/>
 Battery remain:<br/>
 ![battery remain](/screenshots/battery_remain.png)
 
+Battery fully charged:<br/>
+![battery_status_bg_green](/screenshots/battery_status_bg_green.png)
+
 Battery between 99% and 51% charged:<br/>
 ![battery_status_bg_yellow](/screenshots/battery_status_bg_yellow.png)
 
