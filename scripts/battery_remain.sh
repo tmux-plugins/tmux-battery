@@ -22,7 +22,7 @@ print_battery_remain() {
 		pmset_battery_remaining_time
 	elif command_exists "upower"; then
 		battery=$(upower -e | grep battery | head -1)
-		upower -i $battery | grep remain | awk '{print $4}'
+		upower -i $battery | grep -E '(remain|time to empty)' | awk '{print $(NF-1)}'
 	elif command_exists "acpi"; then
 		acpi -b | grep -Eo "[0-9]+:[0-9]+:[0-9]+"
 	fi
