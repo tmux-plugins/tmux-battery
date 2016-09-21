@@ -7,7 +7,12 @@ source "$CURRENT_DIR/helpers.sh"
 print_battery_percentage() {
 	# percentage displayed in the 2nd field of the 2nd row
 	if command_exists "pmset"; then
-		pmset -g batt | awk 'NR==2 { gsub(/;/,""); print $2 }'
+		# the pmset output for macOS sierra is changed
+		if [ $(sysctl kern.osrelease | awk '{print $2}') = "16.0.0" ]; then
+			pmset -g batt | awk 'NR==2 { gsub(/;/,""); print $3 }'
+		else
+			pmset -g batt | awk 'NR==2 { gsub(/;/,""); print $2 }'
+		fi
 	elif command_exists "upower"; then
 		for battery in $(upower -e | grep battery); do
 			upower -i $battery | grep percentage | awk '{print $2}'
