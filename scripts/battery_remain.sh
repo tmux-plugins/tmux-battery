@@ -10,11 +10,7 @@ battery_discharging() {
 }
 
 pmset_battery_remaining_time() {
-	local output="$(pmset -g batt | awk 'NR==2 { gsub(/;/,""); print $5 }')"
-	# output has to match format "10:42"
-	if [[ "$output" =~ ([[:digit:]]{1,2}:[[:digit:]]{2}) ]]; then
-		printf "$output"
-	fi
+	pmset -g batt | grep -o '[0-9]\{1,2\}:[0-9]\{1,2\}'
 }
 
 print_battery_remain() {
