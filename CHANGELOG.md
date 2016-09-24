@@ -1,6 +1,9 @@
 # Changelog
 
 ### master
+
+
+### v1.2.0, 2016-09-24
 - show output for `#{battery_remain}` interpolation only if the battery is
   discharging
 - prevent displaying "(No" for `#{battery_remain}` interpolation (when battery
