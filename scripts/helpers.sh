@@ -14,9 +14,8 @@ is_osx() {
 }
 
 is_chrome() {
-	chrome="/home/.shadow*"
-	path=$(df -Phk $HOME/Downloads | tail -1 | awk '{print $1}')
-	if [[ $path == $chrome ]]; then
+	chrome="/sys/class/chromeos/cros_ec"
+	if [ -d "$chrome" ]; then
 		return 0
 	else
 		return 1
