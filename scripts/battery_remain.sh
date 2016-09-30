@@ -33,17 +33,17 @@ print_battery_remain() {
 }
 
 print_battery_full() {
-  if command_exists "upower"; then
-    battery=$(upower -e | grep battery | head -1)
-    upower -i $battery | grep 'time to full' | awk '{printf "- %s %s till full", $4, $5}'
-  fi
+	if command_exists "upower"; then
+		battery=$(upower -e | grep battery | head -1)
+		upower -i $battery | grep 'time to full' | awk '{printf "- %s %s till full", $4, $5}'
+	fi
 }
 
 main() {
 	if battery_discharging; then
 		print_battery_remain
-  else
-    print_battery_full
-  fi
+	else
+		print_battery_full
+	fi
 }
 main
