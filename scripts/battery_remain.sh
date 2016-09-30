@@ -25,7 +25,7 @@ print_battery_remain() {
 				upower -i $battery | grep 'time to full' | awk '{printf "- %s %s till full", $4, $5}'
 			fi
 		else
-			upower -i $battery | grep 'time to empty' | awk '{printf "- %s %s left", $4, $5}'
+			upower -i $battery | grep -E '(remain|time to empty)' | awk '{print $(NF-1)}'
 		fi
 	elif command_exists "acpi"; then
 		acpi -b | grep -Eo "[0-9]+:[0-9]+:[0-9]+"
