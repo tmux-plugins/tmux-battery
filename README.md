@@ -14,19 +14,33 @@ Battery charging:<br/>
 Battery remain:<br/>
 ![battery remain](/screenshots/battery_remain.png)
 
-This is done by introducing 3 new format strings that can be added to
+Battery fully charged:<br/>
+![battery_status_bg_green](/screenshots/battery_status_bg_green.png)
+
+Battery between 99% and 51% charged:<br/>
+![battery_status_bg_yellow](/screenshots/battery_status_bg_yellow.png)
+
+Battery between 50% and 16% charged:<br/>
+![battery_status_bg_orange](/screenshots/battery_status_bg_orange.png)
+
+Battery between 15% and dead:<br/>
+![battery_status_bg_red](/screenshots/battery_status_bg_red.png)
+
+This is done by introducing 4 new format strings that can be added to
 `status-right` option:
 - `#{battery_icon}` - will display a battery status icon
 - `#{battery_percentage}` - will show battery percentage
 - `#{battery_remain}` - will show remaining time of battery charge
+- `#{battery_status_bg}` - will set the background color of the status bar based on battery percentage
 
 ### Usage
 
-Add `#{battery_icon}`, `#{battery_percentage}` or `#{battery_remain}` format
-strings to existing `status-right` tmux option. Example:
+Add `#{battery_icon}`, `#{battery_percentage}` `#{battery_remain}`, or
+`#{battery_status_bg}` format strings to existing `status-right` tmux option.
+Example:
 
     # in .tmux.conf
-    set -g status-right 'Batt: #{battery_icon} #{battery_percentage} #{battery_remain} | %a %h-%d %H:%M '
+    set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percentage} #{battery_remain} | %a %h-%d %H:%M '
 
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
 
@@ -103,6 +117,7 @@ twitter if you want to hear about new tmux plugins or feature updates.
 - [@m1foley](https://github.com/m1foley)
 - [@asethwright](https://github.com/asethwright)
 - [@JanAhrens](https://github.com/JanAhrens)
+- [@martinbeentjes](https://github.com/martinbeentjes)
 
 ### License
 

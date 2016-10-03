@@ -1,7 +1,8 @@
 # Changelog
 
 ### master
-
+- Added `#{battery_status_bg}` feature (@RyanFrantz) 
+- Added multibattery output support for `upower` (@futuro)
 
 ### v1.2.0, 2016-09-24
 - show output for `#{battery_remain}` interpolation only if the battery is
