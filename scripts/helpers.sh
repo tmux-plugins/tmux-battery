@@ -13,6 +13,15 @@ is_osx() {
 	[ $(uname) == "Darwin" ]
 }
 
+is_chrome() {
+	chrome="/sys/class/chromeos/cros_ec"
+	if [ -d "$chrome" ]; then
+		return 0
+	else
+		return 1
+	fi
+}
+
 command_exists() {
 	local command="$1"
 	type "$command" >/dev/null 2>&1
