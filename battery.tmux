@@ -21,7 +21,7 @@ set_tmux_option() {
 do_interpolation() {
 	local all_interpolated="$1"
 	for key in "${!interpolation[@]}"; do
-		all_interpolated=${all_interpolated/$key/${interpolation[$key]}}
+		all_interpolated="${all_interpolated/$key/${interpolation[$key]}}"
 	done
 	echo "$all_interpolated"
 }
