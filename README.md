@@ -32,6 +32,7 @@ This is done by introducing 4 new format strings that can be added to
 - `#{battery_percentage}` - will show battery percentage
 - `#{battery_remain}` - will show remaining time of battery charge
 - `#{battery_status_bg}` - will set the background color of the status bar based on battery percentage
+- `#{battery_graph}` - will show battery percentage as a bar graph ▁▂▃▅▇
 
 ### Usage
 

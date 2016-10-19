@@ -4,6 +4,7 @@
 - Added `#{battery_status_bg}` feature (@RyanFrantz) 
 - Added multibattery output support for `upower` (@futuro)
 - Added Chromebook support (@forkjoseph)
+- Added battery graph, simplify interpolation (@levens)
 
 ### v1.2.0, 2016-09-24
 - show output for `#{battery_remain}` interpolation only if the battery is
