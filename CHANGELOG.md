@@ -1,6 +1,12 @@
 # Changelog
 
 ### master
+- Added `#{battery_status_bg}` feature (@RyanFrantz) 
+- Added multibattery output support for `upower` (@futuro)
+- Added Chromebook support (@forkjoseph)
+- Added battery graph (@levens)
+
+### v1.2.0, 2016-09-24
 - show output for `#{battery_remain}` interpolation only if the battery is
   discharging
 - prevent displaying "(No" for `#{battery_remain}` interpolation (when battery
@@ -8,8 +14,7 @@
 - display all batteries that upower knows about (@JanAhrens)
 - acpi battery status (@cpb)
 - fix issue with status-right and status-left whitespace being cut out
-- added battery graph (@levens)
-- added prefix/suffix formatters based on battery thresholds (@levens)
+- fix issue with the `pmset -g batt` command output for macOS Sierra and further 
 
 ### v1.1.0, 2015-03-14
 - change the default icon for "attached" battery state from :snail: to :warning:

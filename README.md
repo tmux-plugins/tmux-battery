@@ -14,28 +14,34 @@ Battery charging:<br/>
 Battery remain:<br/>
 ![battery remain](/screenshots/battery_remain.png)
 
-This is done by introducing new format strings that can be added to
+Battery fully charged:<br/>
+![battery_status_bg_green](/screenshots/battery_status_bg_green.png)
+
+Battery between 99% and 51% charged:<br/>
+![battery_status_bg_yellow](/screenshots/battery_status_bg_yellow.png)
+
+Battery between 50% and 16% charged:<br/>
+![battery_status_bg_orange](/screenshots/battery_status_bg_orange.png)
+
+Battery between 15% and dead:<br/>
+![battery_status_bg_red](/screenshots/battery_status_bg_red.png)
+
+This is done by introducing 4 new format strings that can be added to
 `status-right` option:
 - `#{battery_icon}` - will display a battery status icon
 - `#{battery_percentage}` - will show battery percentage
 - `#{battery_remain}` - will show remaining time of battery charge
+- `#{battery_status_bg}` - will set the background color of the status bar based on battery percentage
 - `#{battery_graph}` - will show battery percentage as a bar graph ▁▂▃▅▇
-- `#{battery_prefix}` & `#{battery_suffix}` - allows formatting (e.g. colors)
-  to be applied based on the current battery level
 
 ### Usage
 
-Add `#{battery_icon}`, `#{battery_percentage}`, `#{battery_remain}` or `#{battery_graph}` format
-strings to existing `status-right` tmux option. Example:
+Add `#{battery_icon}`, `#{battery_percentage}` `#{battery_remain}`, or
+`#{battery_status_bg}` format strings to existing `status-right` tmux option.
+Example:
 
     # in .tmux.conf
-    set -g status-right 'Batt: #{battery_icon} #{battery_percentage} #{battery_remain} | %a %h-%d %H:%M '
-
-To add formatting based on the current charge status, add the
-`#{battery_prefix}` and `#{battery_suffix}` strings. Example:
-
-    # in .tmux.conf
-    set -g status-right "Batt: #{battery_prefix}#{battery_icon} #{battery_percentage}#{battery_suffix} | %a %h-%d %H:%M "
+    set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percentage} #{battery_remain} | %a %h-%d %H:%M '
 
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
 
@@ -84,32 +90,6 @@ following lines are not in the code block so that emojis can be seen):
 Don't forget to reload tmux environment (`$ tmux source-file ~/.tmux.conf`)
 after you do this.
 
-### Range formatting
-
-Three ranges for formatting are available:
-
- - Critical (default <10%, red)
- - Warning (default <30%, yellow)
- - OK (default >=30%, green)
-
-These can be customised with a number of options, the first two set the limits:
-
- - set-option -g @batt_warn_thresh 30
- - set-option -g @batt_crit_thresh 10
-
-The individual `#{battery_prefix}` and `#{battery_suffix}` format strings can
-also be customised using the options:
-
- - set-option -g @batt_ok_prefix "[fg=green]"
- - set-option -g @batt_ok_suffix "[fg=default]"
- - set-option -g @batt_warn_prefix "[fg=yellow]"
- - set-option -g @batt_warn_suffix "[fg=default]"
- - set-option -g @batt_crit_prefix "[fg=red]"
- - set-option -g @batt_crit_suffix "[fg=default]"
-
-An example using the [Powerline fonts](https://github.com/powerline/fonts) dividers:<br/>
-![formatting](/screenshots/formatting.png)
-
 ### Limitations
 
 - Battery icon change most likely won't be instant.<br/>
@@ -138,7 +118,7 @@ twitter if you want to hear about new tmux plugins or feature updates.
 - [@m1foley](https://github.com/m1foley)
 - [@asethwright](https://github.com/asethwright)
 - [@JanAhrens](https://github.com/JanAhrens)
-- [@levens](https://github.com/levens)
+- [@martinbeentjes](https://github.com/martinbeentjes)
 
 ### License
 
