@@ -4,13 +4,20 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source "$CURRENT_DIR/scripts/helpers.sh"
 
-declare -A interpolation
-
-interpolation["\#{battery_percentage}"]="#($CURRENT_DIR/scripts/battery_percentage.sh)"
-interpolation["\#{battery_remain}"]="#($CURRENT_DIR/scripts/battery_remain.sh)"
-interpolation["\#{battery_icon}"]="#($CURRENT_DIR/scripts/battery_icon.sh)"
-interpolation["\#{battery_status_bg}"]="#($CURRENT_DIR/scripts/battery_status_bg.sh)"
-interpolation["\#{battery_graph}"]="#($CURRENT_DIR/scripts/battery_graph.sh)"
+battery_interpolation=(
+	"\#{battery_percentage}"
+	"\#{battery_remain}"
+	"\#{battery_icon}"
+	"\#{battery_status_bg}"
+	"\#{battery_graph}"
+)
+battery_commands=(
+	"#($CURRENT_DIR/scripts/battery_percentage.sh)"
+	"#($CURRENT_DIR/scripts/battery_remain.sh)"
+	"#($CURRENT_DIR/scripts/battery_icon.sh)"
+	"#($CURRENT_DIR/scripts/battery_status_bg.sh)"
+	"#($CURRENT_DIR/scripts/battery_graph.sh)"
+)
 
 set_tmux_option() {
 	local option="$1"
@@ -20,8 +27,8 @@ set_tmux_option() {
 
 do_interpolation() {
 	local all_interpolated="$1"
-	for key in "${!interpolation[@]}"; do
-		all_interpolated="${all_interpolated/$key/${interpolation[$key]}}"
+	for ((i=0; i<${#battery_commands[@]}; i++)); do
+		all_interpolated=${all_interpolated/${battery_interpolation[$i]}/${battery_commands[$i]}}
 	done
 	echo "$all_interpolated"
 }
