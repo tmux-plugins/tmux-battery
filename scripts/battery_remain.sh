@@ -14,11 +14,11 @@ pmset_battery_remaining_time() {
 	if echo $status | grep 'no estimate' >/dev/null 2>&1; then
 		echo '- Calculating estimate...'
 	else
-		local time="$(echo $status | grep -o '[0-9]\{1,2\}:[0-9]\{1,2\}')"
+		local remaining_time="$(echo $status | grep -o '[0-9]\{1,2\}:[0-9]\{1,2\}')"
 		if battery_discharging; then
-			echo $time | awk '{printf "- %s left", $1}'
+			echo $remaining_time | awk '{printf "- %s left", $1}'
 		else
-			echo $time | awk '{printf "- %s till full", $1}'
+			echo $remaining_time | awk '{printf "- %s till full", $1}'
 		fi
 	fi
 }
