@@ -112,13 +112,24 @@ You might also find these useful:
 You might want to follow [@brunosutic](https://twitter.com/brunosutic) on
 twitter if you want to hear about new tmux plugins or feature updates.
 
+### Maintainer
+
+ - [Martin Beentjes](https://github.com/martinbeentjes)
+
 ### Contributors
 
-- [@jgeralnik](https://github.com/jgeralnik)
-- [@m1foley](https://github.com/m1foley)
-- [@asethwright](https://github.com/asethwright)
-- [@JanAhrens](https://github.com/JanAhrens)
-- [@martinbeentjes](https://github.com/martinbeentjes)
+ - Adam Biggs
+ - Bruno Sutic
+ - Caleb
+ - Evan N-D
+ - Jan Ahrens
+ - Joey Geralnik
+ - Joseph
+ - Martin Beentjes
+ - Mike Foley
+ - Ryan Frantz
+ - Seth Wright
+ - Tom Levens
 
 ### License
 
