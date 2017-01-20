@@ -90,6 +90,20 @@ following lines are not in the code block so that emojis can be seen):
 Don't forget to reload tmux environment (`$ tmux source-file ~/.tmux.conf`)
 after you do this.
 
+### Changing battery percentage color
+
+By default, if battery percentage is lower than 10%, display it with red color.
+You can change these defaults by adding the following to `.tmux.conf`.
+
+```bash
+set -g @highlight_battery "off"          # show off highlighting battery (default "on")
+set -g @highlight_battery_color "blue"   # change color (default "red")
+set -g @highlight_battery_threshold "20" # change threshold (default "10")
+```
+
+Don't forget to reload tmux environment (`$ tmux source-file ~/.tmux.conf`)
+after you do this.
+
 ### Limitations
 
 - Battery icon change most likely won't be instant.<br/>

@@ -4,6 +4,18 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source "$CURRENT_DIR/helpers.sh"
 
+highlight_battery_percentage() {
+	local battery_percentage="$1"
+	local highlight_battery_color="$(get_tmux_option "@highlight_battery_color" "red")"
+	local highlight_battery_threshold="$(get_tmux_option "@highlight_battery_threshold" 10)"
+
+	if [[ $(echo "$battery_percentage" | sed 's/\%//') -le $highlight_battery_threshold ]]; then
+		echo "#[fg=${highlight_battery_color}]${battery_percentage}#[fg=default]"
+	else
+		echo "$battery_percentage"
+	fi
+}
+
 print_battery_percentage() {
 	# percentage displayed in the 2nd field of the 2nd row
 	if command_exists "pmset"; then
@@ -23,6 +35,10 @@ print_battery_percentage() {
 }
 
 main() {
-	print_battery_percentage
+	if [[ "$(get_tmux_option "@highlight_battery" "on")" == "on" ]]; then
+		highlight_battery_percentage "$(print_battery_percentage)"
+	else
+		print_battery_percentage
+	fi
 }
 main
