@@ -2,48 +2,8 @@
 
 Enables displaying battery percentage and status icon in tmux status-right.
 
-Battery full (for OS X):<br/>
-![battery full](/screenshots/battery_full.png)
-
-Battery discharging, custom discharge icon:<br/>
-![battery discharging, custom icon](/screenshots/battery_discharging.png)
-
-Battery charging:<br/>
-![battery charging](/screenshots/battery_charging.png)
-
-Battery remain:<br/>
-![battery remain](/screenshots/battery_remain.png)
-
-Battery fully charged:<br/>
-![battery_status_bg_green](/screenshots/battery_status_bg_green.png)
-
-Battery between 99% and 51% charged:<br/>
-![battery_status_bg_yellow](/screenshots/battery_status_bg_yellow.png)
-
-Battery between 50% and 16% charged:<br/>
-![battery_status_bg_orange](/screenshots/battery_status_bg_orange.png)
-
-Battery between 15% and dead:<br/>
-![battery_status_bg_red](/screenshots/battery_status_bg_red.png)
-
-This is done by introducing 4 new format strings that can be added to
-`status-right` option:
-- `#{battery_icon}` - will display a battery status icon
-- `#{battery_percentage}` - will show battery percentage
-- `#{battery_remain}` - will show remaining time of battery charge
-- `#{battery_status_bg}` - will set the background color of the status bar based on battery percentage
-- `#{battery_graph}` - will show battery percentage as a bar graph ▁▂▃▅▇
-
-### Usage
-
-Add `#{battery_icon}`, `#{battery_percentage}` `#{battery_remain}`, or
-`#{battery_status_bg}` format strings to existing `status-right` tmux option.
-Example:
-
-    # in .tmux.conf
-    set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percentage} #{battery_remain} | %a %h-%d %H:%M '
-
-### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
+## Installation
+### Intallation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
 
 Add plugin to the list of TPM plugins in `.tmux.conf`:
 
@@ -70,7 +30,50 @@ Reload TMUX environment:
 
 If format strings are added to `status-right`, they should now be visible.
 
-### Changing icons
+## Usage
+
+Add `#{battery_icon}`, `#{battery_percentage}` `#{battery_remain}`, or
+`#{battery_status_bg}` format strings to existing `status-right` tmux option.
+Example:
+
+    # in .tmux.conf
+    set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percentage} #{battery_remain} | %a %h-%d %H:%M '
+
+
+## Examples
+Battery full (for OS X):
+![battery full](/screenshots/battery_full.png)
+
+Battery discharging, custom discharge icon:
+![battery discharging, custom icon](/screenshots/battery_discharging.png)
+
+Battery charging:
+![battery charging](/screenshots/battery_charging.png)
+
+Battery remain:<br/>
+![battery remain](/screenshots/battery_remain.png)
+
+Battery fully charged:<br/>
+![battery_status_bg_green](/screenshots/battery_status_bg_green.png)
+
+Battery between 99% and 51% charged:<br/>
+![battery_status_bg_yellow](/screenshots/battery_status_bg_yellow.png)
+
+Battery between 50% and 16% charged:<br/>
+![battery_status_bg_orange](/screenshots/battery_status_bg_orange.png)
+
+Battery between 15% and dead:<br/>
+![battery_status_bg_red](/screenshots/battery_status_bg_red.png)
+
+This is done by introducing 4 new format strings that can be added to
+`status-right` option:
+- `#{battery_icon}` - will display a battery status icon
+- `#{battery_percentage}` - will show battery percentage
+- `#{battery_remain}` - will show remaining time of battery charge
+- `#{battery_status_bg}` - will set the background color of the status bar based on battery percentage
+- `#{battery_graph}` - will show battery percentage as a bar graph ▁▂▃▅▇
+
+## Changing icons
 
 By default, these icons are displayed:
 
@@ -90,24 +93,11 @@ following lines are not in the code block so that emojis can be seen):
 Don't forget to reload tmux environment (`$ tmux source-file ~/.tmux.conf`)
 after you do this.
 
-### Limitations
+*Warning*: The battery icon change most likely will not be instant. When you un-plug the power cord, it will take some time (15 - 60 seconds) for the icon to change. This depends on the `status-interval` tmux option. Setting it to 15 seconds should be good enough.
 
-- Battery icon change most likely won't be instant.<br/>
-  When you un-plug power cord it will take some time (15 - 60 seconds) for the
-  icon to change. This depends on the `status-interval` tmux option. Setting it
-  to 15 seconds should be good enough.
+### Tmux Plugins
 
-### Other goodies
-
-You might also find these useful:
-
-- [resurrect](https://github.com/tmux-plugins/tmux-resurrect) - restore tmux
-  environment after system restart
-- [logging](https://github.com/tmux-plugins/tmux-logging) - easy logging and
-  screen capturing
-- [online status](https://github.com/tmux-plugins/tmux-online-status) - online status
-  indicator in tmux `status-right`. Useful when on flaky connection to see if
-  you're online.
+This plugin is part of the [tmux-plugins](https://github.com/tmux-plugins) organisation. Checkout plugins as [resurrect](https://github.com/tmux-plugins/tmux-resurrect), [logging](https://github.com/tmux-plugins/tmux-logging), [online status](https://github.com/tmux-plugins/tmux-online-status), and many more over at the [tmux-plugins](https://github.com/tmux-plugins) organisation page.
 
 You might want to follow [@brunosutic](https://twitter.com/brunosutic) on
 twitter if you want to hear about new tmux plugins or feature updates.
