@@ -41,13 +41,13 @@ Example:
 
 
 ## Examples
-Battery full (for OS X):
+Battery full (for OS X):<br/>
 ![battery full](/screenshots/battery_full.png)
 
-Battery discharging, custom discharge icon:
+Battery discharging, custom discharge icon:<br/>
 ![battery discharging, custom icon](/screenshots/battery_discharging.png)
 
-Battery charging:
+Battery charging:<br/>
 ![battery charging](/screenshots/battery_charging.png)
 
 Battery remain:<br/>
