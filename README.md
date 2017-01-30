@@ -110,6 +110,7 @@ twitter if you want to hear about new tmux plugins or feature updates.
 ### Contributors
 
  - Adam Biggs
+ - Aleksandar Djurdjic
  - Bruno Sutic
  - Caleb
  - Evan N-D
