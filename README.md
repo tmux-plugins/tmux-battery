@@ -3,7 +3,7 @@
 Enables displaying battery percentage and status icon in tmux status-right.
 
 ## Installation
-### Intallation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
+### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
 
 Add plugin to the list of TPM plugins in `.tmux.conf`:
 
