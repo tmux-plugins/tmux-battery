@@ -46,6 +46,8 @@ print_icon() {
 }
 
 main() {
+	ac_online && { echo ""; return 0; }
+
 	get_icon_settings
 	local status=$(battery_status)
 	print_icon "$status"

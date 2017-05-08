@@ -21,6 +21,7 @@ print_graph() {
 }
 
 main() {
+	ac_online && { echo ""; return 0; }
 	local percentage=$($CURRENT_DIR/battery_percentage.sh)
 	print_graph ${percentage%?}
 }

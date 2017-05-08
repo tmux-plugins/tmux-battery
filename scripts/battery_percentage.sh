@@ -23,6 +23,7 @@ print_battery_percentage() {
 }
 
 main() {
+	ac_online && { echo ""; return 0; }
 	print_battery_percentage
 }
 main
