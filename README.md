@@ -96,6 +96,15 @@ after you do this.
 
 *Warning*: The battery icon change most likely will not be instant. When you un-plug the power cord, it will take some time (15 - 60 seconds) for the icon to change. This depends on the `status-interval` tmux option. Setting it to 15 seconds should be good enough.
 
+## Shortened remaining output
+
+To shorten the output of `#{battery_remain}`, set the following variable:
+
+    set -g @batt_remain_short true
+
+This will hide output if the battery is charging or charged, and shorten the
+time remaining (when discharging) to `~H:MM`.
+
 ### Tmux Plugins
 
 This plugin is part of the [tmux-plugins](https://github.com/tmux-plugins) organisation. Checkout plugins as [resurrect](https://github.com/tmux-plugins/tmux-resurrect), [logging](https://github.com/tmux-plugins/tmux-logging), [online status](https://github.com/tmux-plugins/tmux-online-status), and many more over at the [tmux-plugins](https://github.com/tmux-plugins) organisation page.

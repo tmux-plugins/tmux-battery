@@ -4,6 +4,12 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source "$CURRENT_DIR/helpers.sh"
 
+short=false
+
+get_remain_settings() {
+	short=$(get_tmux_option "@batt_remain_short" false)
+}
+
 battery_discharging() {
 	local status="$(battery_status)"
 	[[ $status =~ (discharging) ]]
@@ -12,13 +18,23 @@ battery_discharging() {
 pmset_battery_remaining_time() {
 	local status="$(pmset -g batt)"
 	if echo $status | grep 'no estimate' >/dev/null 2>&1; then
-		echo '- Calculating estimate...'
+		if $short; then
+			echo '~?:??'
+		else
+			echo '- Calculating estimate...'
+		fi
 	else
 		local remaining_time="$(echo $status | grep -o '[0-9]\{1,2\}:[0-9]\{1,2\}')"
 		if battery_discharging; then
-			echo $remaining_time | awk '{printf "- %s left", $1}'
+			if $short; then
+				echo $remaining_time | awk '{printf "~%s"}'
+			else
+				echo $remaining_time | awk '{printf "- %s left", $1}'
+			fi
 		else
-			echo $remaining_time | awk '{printf "- %s till full", $1}'
+			if !$short; then
+				echo $remaining_time | awk '{printf "- %s till full", $1}'
+			fi
 		fi
 	fi
 }
@@ -43,6 +59,10 @@ print_battery_remain() {
 }
 
 print_battery_full() {
+	if !$short; then
+		return
+	fi
+
 	if command_exists "pmset"; then
 		pmset_battery_remaining_time
 	elif command_exists "upower"; then
@@ -52,10 +72,13 @@ print_battery_full() {
 }
 
 main() {
+	get_remain_settings
 	if battery_discharging; then
 		print_battery_remain
 	else
-		print_battery_full
+		if !$short; then
+			print_battery_full
+		fi
 	fi
 }
 main
