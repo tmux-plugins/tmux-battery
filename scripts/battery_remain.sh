@@ -27,7 +27,7 @@ pmset_battery_remaining_time() {
 		local remaining_time="$(echo $status | grep -o '[0-9]\{1,2\}:[0-9]\{1,2\}')"
 		if battery_discharging; then
 			if $short; then
-				echo $remaining_time | awk '{printf "~%s"}'
+				echo $remaining_time | awk '{printf "~%s", $1}'
 			else
 				echo $remaining_time | awk '{printf "- %s left", $1}'
 			fi
