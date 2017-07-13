@@ -10,6 +10,9 @@ print_battery_percentage() {
 		pmset -g batt | grep -o "[0-9]\{1,3\}%"
 	elif command_exists "upower"; then
 		local batteries=( $(upower -e | grep battery) )
+		if [ -z "$batteries" ]; then
+			return
+		fi
 		local energy
 		local energy_full
 		for battery in ${batteries[@]}; do
