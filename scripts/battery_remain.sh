@@ -43,7 +43,7 @@ print_battery_remain() {
 	if command_exists "pmset"; then
 		pmset_battery_remaining_time
 	elif command_exists "upower"; then
-		battery=$(upower -e | grep battery | head -1)
+		battery=$(upower -e | grep -m 1 battery)
 		if is_chrome; then
 			if battery_discharging; then
 				upower -i $battery | grep 'time to empty' | awk '{printf "- %s %s left", $4, $5}'
@@ -54,7 +54,7 @@ print_battery_remain() {
 			upower -i $battery | grep -E '(remain|time to empty)' | awk '{print $(NF-1)}'
 		fi
 	elif command_exists "acpi"; then
-		acpi -b | grep -Eo "[0-9]+:[0-9]+:[0-9]+"
+		acpi -b | grep -m 1 -Eo "[0-9]+:[0-9]+:[0-9]+"
 	fi
 }
 
@@ -66,7 +66,7 @@ print_battery_full() {
 	if command_exists "pmset"; then
 		pmset_battery_remaining_time
 	elif command_exists "upower"; then
-		battery=$(upower -e | grep battery | head -1)
+		battery=$(upower -e | grep -m 1 battery)
 		upower -i $battery | grep 'time to full' | awk '{printf "- %s %s till full", $4, $5}'
 	fi
 }
