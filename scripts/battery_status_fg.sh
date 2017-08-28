@@ -30,6 +30,8 @@ print_battery_status_fg() {
         printf $color_high_charge
     elif [ $percentage -le 50 -a $percentage -ge 16 ];then
         printf $color_medium_charge
+    elif [ "$percentage" == "" ];then  
+        printf $color_full_charge_default  # assume it's a desktop
     else
         printf $color_low_charge
     fi
