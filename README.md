@@ -80,7 +80,7 @@ By default, these icons are displayed:
 
  - charged: ":battery:" ("❇ " when not on OS X)
  - charging: ":zap:"
- - discharging: (nothing shown)
+ - discharging: Moon icons depending on your battery level
  - attached but not charging: ":warning:"
 
 You can change these defaults by adding the following to `.tmux.conf` (the
@@ -90,6 +90,10 @@ following lines are not in the code block so that emojis can be seen):
  - set -g @batt_charging_icon ":+1:"
  - set -g @batt_discharging_icon ":thumbsdown:"
  - set -g @batt_attached_icon ":neutral_face:"
+ - set -g @batt_full_charge_icon "🌕 "
+ - set -g @batt_high_charge_icon "🌖 "
+ - set -g @batt_medium_charge_icon "🌗 "
+ - set -g @batt_low_charge_icon "🌘 "
 
 Don't forget to reload tmux environment (`$ tmux source-file ~/.tmux.conf`)
 after you do this.
