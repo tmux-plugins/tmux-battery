@@ -90,10 +90,10 @@ following lines are not in the code block so that emojis can be seen):
  - set -g @batt_charging_icon ":+1:"
  - set -g @batt_discharging_icon ":thumbsdown:"
  - set -g @batt_attached_icon ":neutral_face:"
- - set -g @full_charge_icon "🌕 "
- - set -g @high_charge_icon "🌖 "
- - set -g @medium_charge_icon "🌗 "
- - set -g @low_charge_icon "🌘 "
+ - set -g @batt_full_charge_icon "🌕 "
+ - set -g @batt_high_charge_icon "🌖 "
+ - set -g @batt_medium_charge_icon "🌗 "
+ - set -g @batt_low_charge_icon "🌘 "
 
 Don't forget to reload tmux environment (`$ tmux source-file ~/.tmux.conf`)
 after you do this.
