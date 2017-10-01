@@ -36,5 +36,7 @@ battery_status() {
 		upower -i $battery | awk '/state/ {print $2}'
 	elif command_exists "acpi"; then
 		acpi -b | awk '{gsub(/,/, ""); print tolower($3); exit}'
+	elif command_exists "termux-battery-status"; then
+		termux-battery-status | jq -r '.status' | awk '{printf("%s%", tolower($1))}'
 	fi
 }
