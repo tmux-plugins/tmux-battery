@@ -88,7 +88,6 @@ following lines are not in the code block so that emojis can be seen):
 
  - set -g @batt_charged_icon ":sunglasses:"
  - set -g @batt_charging_icon ":+1:"
- - set -g @batt_discharging_icon ":thumbsdown:"
  - set -g @batt_attached_icon ":neutral_face:"
  - set -g @batt_full_charge_icon "🌕 "
  - set -g @batt_high_charge_icon "🌖 "
