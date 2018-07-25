@@ -32,7 +32,7 @@ battery_status() {
 		pmset -g batt | awk -F '; *' 'NR==2 { print $2 }'
 	elif command_exists "upower"; then
 		local battery
-		battery=$(upower -e | grep -m 1 battery)
+		battery=$(upower -e | grep -E 'battery|DisplayDevice'| tail -n1)
 		upower -i $battery | awk '/state/ {print $2}'
 	elif command_exists "acpi"; then
 		acpi -b | awk '{gsub(/,/, ""); print tolower($3); exit}'

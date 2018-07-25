@@ -9,7 +9,8 @@ print_battery_percentage() {
 	if command_exists "pmset"; then
 		pmset -g batt | grep -o "[0-9]\{1,3\}%"
 	elif command_exists "upower"; then
-		local battery=$(upower -e | grep -m 1 battery)
+        # use DisplayDevice if available otherwise battery
+		local battery=$(upower -e | grep -E 'battery|DisplayDevice'| tail -n1)
 		if [ -z "$battery" ]; then
 			return
 		fi
