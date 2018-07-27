@@ -32,7 +32,9 @@ pmset_battery_remaining_time() {
 				echo $remaining_time | awk '{printf "- %s left", $1}'
 			fi
 		else
-			if !$short; then
+			if $short; then
+				echo $remaining_time | awk '{printf "~%s", $1}'
+			else
 				echo $remaining_time | awk '{printf "- %s till full", $1}'
 			fi
 		fi
@@ -76,9 +78,7 @@ main() {
 	if battery_discharging; then
 		print_battery_remain
 	else
-		if !$short; then
-			print_battery_full
-		fi
+		print_battery_full
 	fi
 }
 main
