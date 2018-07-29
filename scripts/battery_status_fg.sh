@@ -25,11 +25,11 @@ get_charge_color_settings() {
 }
 
 print_battery_status_fg() {
+    # Call `battery_percentage.sh`.
+    percentage=$($CURRENT_DIR/battery_percentage.sh | sed -e 's/%//')
     status=$(battery_status | awk '{print $1;}')
     if [ $status == 'charging' ]; then
         printf $color_charging
-    # Call `battery_percentage.sh`.
-    percentage=$($CURRENT_DIR/battery_percentage.sh | sed -e 's/%//')
     elif [ $percentage -eq 100 ]; then
         printf $color_full_charge
     elif [ $percentage -le 99 -a $percentage -ge 51 ];then
