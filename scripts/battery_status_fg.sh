@@ -8,7 +8,7 @@ color_full_charge_default="#[fg=green]"
 color_high_charge_default="#[fg=yellow]"
 color_medium_charge_default="#[fg=colour208]" # orange
 color_low_charge_default="#[fg=red]"
-color_charging_default="#[fg=blue]"
+color_charging_default="#[fg=green]"
 
 color_full_charge=""
 color_high_charge=""
