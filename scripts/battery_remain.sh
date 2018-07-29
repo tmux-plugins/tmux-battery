@@ -15,6 +15,11 @@ battery_discharging() {
 	[[ $status =~ (discharging) ]]
 }
 
+battery_charged() {
+	local status="$(battery_status)"
+	[[ $status =~ (charged) ]]
+}
+
 pmset_battery_remaining_time() {
 	local status="$(pmset -g batt)"
 	if echo $status | grep 'no estimate' >/dev/null 2>&1; then
@@ -30,6 +35,12 @@ pmset_battery_remaining_time() {
 				echo $remaining_time | awk '{printf "~%s", $1}'
 			else
 				echo $remaining_time | awk '{printf "- %s left", $1}'
+			fi
+		elif battery_charged; then
+			if $short; then
+				echo $remaining_time | awk '{printf "charged", $1}'
+			else
+				echo $remaining_time | awk '{printf "fully charged", $1}'
 			fi
 		else
 			if $short; then
