@@ -44,7 +44,7 @@ get_icon_settings() {
 
 print_icon() {
 	local status=$1
-	if [[ $status =~ (charged) ]]; then
+	if [[ $status =~ (charged) || $status =~ (full) ]]; then
 		printf "$charged_icon"
 	elif [[ $status =~ (^charging) ]]; then
 		printf "$charging_icon"
