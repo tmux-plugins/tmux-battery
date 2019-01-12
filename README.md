@@ -114,8 +114,7 @@ To shorten the output of `#{battery_remain}`, set the following variable:
 
     set -g @batt_remain_short true
 
-This will hide output if the battery is charging or charged, and shorten the
-time remaining (when discharging) to `~H:MM`.
+This will shorten the time remaining (when charging or discharging) to `~H:MM`.
 
 ### Tmux Plugins
 
@@ -134,6 +133,7 @@ twitter if you want to hear about new tmux plugins or feature updates.
  - Aleksandar Djurdjic
  - Bruno Sutic
  - Caleb
+ - Diego Ximenes
  - Evan N-D
  - Jan Ahrens
  - Joey Geralnik
