@@ -14,6 +14,11 @@ print_battery_percentage() {
 		if [ -z "$battery" ]; then
 			return
 		fi
+		local percentage=$(upower -i $battery | awk '/percentage:/ {print $2}')
+		if [ "$percentage" ]; then
+			echo $percentage
+			return
+		fi
 		local energy
 		local energy_full
 		energy=$(upower -i $battery | awk -v nrg="$energy" '/energy:/ {print nrg+$2}')
