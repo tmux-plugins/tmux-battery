@@ -25,6 +25,8 @@ print_battery_percentage() {
 		acpi -b | grep -m 1 -Eo "[0-9]+%"
 	elif command_exists "termux-battery-status"; then
 		termux-battery-status | jq -r '.percentage' | awk '{printf("%d%%", $1)}'
+	elif command_exists "apm"; then
+		apm -l
 	fi
 }
 

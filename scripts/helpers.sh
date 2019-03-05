@@ -38,5 +38,13 @@ battery_status() {
 		acpi -b | awk '{gsub(/,/, ""); print tolower($3); exit}'
 	elif command_exists "termux-battery-status"; then
 		termux-battery-status | jq -r '.status' | awk '{printf("%s%", tolower($1))}'
+	elif command_exists "apm"; then
+		local battery
+		battery=$(apm -a)
+		if [ $battery -eq 0 ]; then
+			echo "discharging"
+		elif [ $battery -eq 1 ]; then
+			echo "charging"
+		fi
 	fi
 }
