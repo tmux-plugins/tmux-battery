@@ -20,6 +20,32 @@ battery_charged() {
 	[[ $status =~ (charged) ]]
 }
 
+
+convertmins() {
+	((h=${1}/60))
+	((m=${1}%60))
+	printf "%02d:%02d\n" $h $m $s
+}
+
+apm_battery_remaining_time() {
+	local remaining_time="$(convertmins $(apm -m))"
+	if battery_discharging; then
+		if $short; then
+			echo $remaining_time | awk '{printf "~%s", $1}'
+		else
+			echo $remaining_time | awk '{printf "- %s left", $1}'
+		fi
+	elif battery_charged; then
+		if $short; then
+			echo $remaining_time | awk '{printf "charged", $1}'
+		else
+			echo $remaining_time | awk '{printf "fully charged", $1}'
+		fi
+	else
+		echo "charging"
+	fi
+}
+
 pmset_battery_remaining_time() {
 	local status="$(pmset -g batt)"
 	if echo $status | grep 'no estimate' >/dev/null 2>&1; then
@@ -90,6 +116,8 @@ print_battery_remain() {
 		upower_battery_remaining_time
 	elif command_exists "acpi"; then
 		acpi_battery_remaining_time
+	elif command_exists "apm"; then
+		apm_battery_remaining_time
 	fi
 }
 

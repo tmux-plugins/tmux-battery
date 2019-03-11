@@ -22,6 +22,10 @@ print_graph() {
 
 main() {
 	local percentage=$($CURRENT_DIR/battery_percentage.sh)
-	print_graph ${percentage%?}
+	if [ "$(uname)" == "OpenBSD" ]; then
+		print_graph ${percentage}
+	else
+		print_graph ${percentage%?}
+	fi
 }
 main
