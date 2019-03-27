@@ -4,13 +4,13 @@ Enables displaying battery percentage and status icon in tmux status-right.
 
 ## Installation
 
-In order to read the battery status, this plugin depends on having either one of the following applications installed:
-- pmset
-- upower
+In order to read the battery status, this plugin depends on having one of the following applications installed:
+- pmset (MacOS only)
 - acpi
+- upower
 - termux-battery-status
 
-In a normal situation one of these above should be installed on your system by default and thus it would not be necessary to install one of them.
+In a normal situation, one of the above should be installed on your system by default and thus it should not be necessary to specifically install one of them. That being said, the `acpi` utility is currently recommended for use over `upower` where possible due to ongoing CPU usage issues.
 
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
 
@@ -133,6 +133,7 @@ twitter if you want to hear about new tmux plugins or feature updates.
  - Aleksandar Djurdjic
  - Bruno Sutic
  - Caleb
+ - Dan Cassidy
  - Diego Ximenes
  - Evan N-D
  - Jan Ahrens
