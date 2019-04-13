@@ -138,7 +138,7 @@ twitter if you want to hear about new tmux plugins or feature updates.
  - Evan N-D
  - Jan Ahrens
  - Joey Geralnik
- - Joseph
+ - HyunJong (Joseph) Lee
  - Martin Beentjes
  - Mike Foley
  - Ryan Frantz
