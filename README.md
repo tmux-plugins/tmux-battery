@@ -120,9 +120,6 @@ This will shorten the time remaining (when charging or discharging) to `~H:MM`.
 
 This plugin is part of the [tmux-plugins](https://github.com/tmux-plugins) organisation. Checkout plugins as [resurrect](https://github.com/tmux-plugins/tmux-resurrect), [logging](https://github.com/tmux-plugins/tmux-logging), [online status](https://github.com/tmux-plugins/tmux-online-status), and many more over at the [tmux-plugins](https://github.com/tmux-plugins) organisation page.
 
-You might want to follow [@brunosutic](https://twitter.com/brunosutic) on
-twitter if you want to hear about new tmux plugins or feature updates.
-
 ### Maintainer
 
  - [Martin Beentjes](https://github.com/martinbeentjes)
