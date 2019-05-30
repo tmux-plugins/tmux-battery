@@ -63,7 +63,7 @@ set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percen
  - `#{battery_color_charge_fg}` - will set the foreground color of the status bar based solely on the battery charge level
  - `#{battery_color_status_bg}` - will set the background color of the status bar based solely on the battery status
  - `#{battery_color_status_fg}` - will set the foreground color of the status bar based solely on the battery status
- - `#{battery_graph}` - will show battery percentage as a bar graph: ▁▂▃▅▇
+ - `#{battery_graph}` - will show battery percentage as a bar graph: ▁▂▄▆█
  - `#{battery_icon}` - will display a battery status/charge icon
  - `#{battery_icon_charge}` - will display a battery charge icon
  - `#{battery_icon_status}` - will display a battery status icon
