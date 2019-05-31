@@ -88,7 +88,9 @@ set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percen
 
 By default, the following colors and icons are used. (The exact colors displayed depends on your terminal / X11 config.)
 
-Note: The level of charge as noted below (e.g. `[80%-95%)`) uses interval notation. If you are unfamiliar with it, <a href="https://en.wikipedia.org/wiki/Bracket_(mathematics)#Intervals">check it out here</a>.
+Please be aware that the 'level of charge' as noted below (e.g. `[80%-95%)`) uses interval notation. If you are unfamiliar with it, <a href="https://en.wikipedia.org/wiki/Bracket_(mathematics)#Intervals">check it out here</a>.
+
+Also, a note about the `@batt_color_...` options: `@batt_color_..._primary` options are what will be displayed in the main `bg` or `fg` format strings you choose - e.g. if you use `#{battery_color_bg}`, the `@batt_color_..._primary` color you choose will be the background. Likewise, the corresponding `@batt_color_..._secondary` options will be the foreground.
 
 Level of Charge Colors:
 
