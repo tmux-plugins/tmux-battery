@@ -1,6 +1,8 @@
 # Changelog
 
 ### master
+- Fixed `#{battery_graph}` to actually display graph (@rux616)
+- High-granularity icons and colors added. (@rux616)
 - Changed preferred order of utility applications to be `pmset` -> `acpi` -> `upower` -> `termux-battery-status` due to CPU usage issues with `upower` (2019-03-05) (@rux616)
 - Added `#{battery_status_bg}` feature (@RyanFrantz) 
 - Added multibattery output support for `upower` (@futuro)

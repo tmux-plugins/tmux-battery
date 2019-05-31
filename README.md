@@ -9,6 +9,7 @@ In order to read the battery status, this plugin depends on having one of the fo
 - acpi
 - upower
 - termux-battery-status
+- apm
 
 In a normal situation, one of the above should be installed on your system by default and thus it should not be necessary to specifically install one of them. That being said, the `acpi` utility is currently recommended for use over `upower` where possible due to ongoing CPU usage issues.
 
@@ -16,9 +17,11 @@ In a normal situation, one of the above should be installed on your system by de
 
 Add plugin to the list of TPM plugins in `.tmux.conf`:
 
-    set -g @plugin 'tmux-plugins/tmux-battery'
+```tmux
+set -g @plugin 'tmux-plugins/tmux-battery'
+```
 
-Hit `prefix + I` to fetch the plugin and source it.
+Hit `<prefix> + I` to fetch the plugin and source it.
 
 If format strings are added to `status-right`, they should now be visible.
 
@@ -26,95 +29,207 @@ If format strings are added to `status-right`, they should now be visible.
 
 Clone the repo:
 
-    $ git clone https://github.com/tmux-plugins/tmux-battery ~/clone/path
+```shell
+git clone https://github.com/tmux-plugins/tmux-battery ~/clone/path
+```
 
 Add this line to the bottom of `.tmux.conf`:
 
-    run-shell ~/clone/path/battery.tmux
+```tmux
+run-shell ~/clone/path/battery.tmux
+```
 
-Reload TMUX environment:
+From the terminal, reload TMUX environment:
 
-    # type this in terminal
-    $ tmux source-file ~/.tmux.conf
+```shell
+tmux source-file ~/.tmux.conf
+```
 
 If format strings are added to `status-right`, they should now be visible.
 
 ## Usage
 
-Add `#{battery_icon}`, `#{battery_percentage}` `#{battery_remain}`, or
-`#{battery_status_bg}` format strings to existing `status-right` tmux option.
-Example:
+Add any of the supported format strings (see below) to the `status-right` tmux option in `.tmux.conf`. Example:
 
-    # in .tmux.conf
-    set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percentage} #{battery_remain} | %a %h-%d %H:%M '
+```tmux
+set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percentage} #{battery_remain} | %a %h-%d %H:%M '
+```
 
+### Supported Format Strings
 
-## Examples
-Battery full (for OS X):<br/>
-![battery full](/screenshots/battery_full.png)
+ - `#{battery_color_bg}` - will set the background color of the status bar based on the battery charge level and status
+ - `#{battery_color_fg}` - will set the foreground color of the status bar based on the battery charge level and status
+ - `#{battery_color_charge_bg}` - will set the background color of the status bar based solely on the battery charge level
+ - `#{battery_color_charge_fg}` - will set the foreground color of the status bar based solely on the battery charge level
+ - `#{battery_color_status_bg}` - will set the background color of the status bar based solely on the battery status
+ - `#{battery_color_status_fg}` - will set the foreground color of the status bar based solely on the battery status
+ - `#{battery_graph}` - will show battery percentage as a bar graph: ▁▂▄▆█
+ - `#{battery_icon}` - will display a battery status/charge icon
+ - `#{battery_icon_charge}` - will display a battery charge icon
+ - `#{battery_icon_status}` - will display a battery status icon
+ - `#{battery_percentage}` - will show battery percentage
+ - `#{battery_remain}` - will show remaining time of battery charge\*
 
-Battery discharging, custom discharge icon:<br/>
-![battery discharging, custom icon](/screenshots/battery_discharging.png)
+\* These format strings can be further customized via options as described below.
 
-Battery charging:<br/>
-![battery charging](/screenshots/battery_charging.png)
+#### Options
 
-Battery remain:<br/>
-![battery remain](/screenshots/battery_remain.png)
+`#{battery_remain}`
 
-Battery fully charged:<br/>
-![battery_status_bg_green](/screenshots/battery_status_bg_green.png)
+ - `@batt_remain_short`: 'true' / 'false' - This will shorten the time remaining (when charging or discharging) to `~H:MM`.
 
-Battery between 99% and 51% charged:<br/>
-![battery_status_bg_yellow](/screenshots/battery_status_bg_yellow.png)
+### Defaults
 
-Battery between 50% and 16% charged:<br/>
-![battery_status_bg_orange](/screenshots/battery_status_bg_orange.png)
+#### Options
 
-Battery between 15% and dead:<br/>
-![battery_status_bg_red](/screenshots/battery_status_bg_red.png)
+ - `@batt_remain_short`: 'false'
 
-This is done by introducing new format strings that can be added to
-`status-right` option:
-- `#{battery_icon}` - will display a battery status icon
-- `#{battery_percentage}` - will show battery percentage
-- `#{battery_remain}` - will show remaining time of battery charge
-- `#{battery_status_bg}` - will set the background color of the status bar based on the battery percentage
-- `#{battery_status_fg}` - will set the foreground color of the status bar based on the battery percentage
-- `#{battery_graph}` - will show battery percentage as a bar graph ▁▂▃▅▇
+#### Icons/Colors
 
-## Changing icons
+By default, the following colors and icons are used. (The exact colors displayed depends on your terminal / X11 config.)
 
-By default, these icons are displayed:
+Please be aware that the 'level of charge' as noted below (e.g. `[80%-95%)`) uses interval notation. If you are unfamiliar with it, <a href="https://en.wikipedia.org/wiki/Bracket_(mathematics)#Intervals">check it out here</a>.
 
- - charged: ":battery:" ("❇ " when not on OS X)
- - charging: ":zap:"
- - discharging: Moon icons depending on your battery level
- - attached but not charging: ":warning:"
+Also, a note about the `@batt_color_...` options: `@batt_color_..._primary` options are what will be displayed in the main `bg` or `fg` format strings you choose - e.g. if you use `#{battery_color_bg}`, the `@batt_color_..._primary` color you choose will be the background. Likewise, the corresponding `@batt_color_..._secondary` color will be the foreground.
 
-You can change these defaults by adding the following to `.tmux.conf` (the
-following lines are not in the code block so that emojis can be seen):
+Level of Charge Colors:
 
- - set -g @batt_charged_icon ":sunglasses:"
- - set -g @batt_charging_icon ":+1:"
- - set -g @batt_attached_icon ":neutral_face:"
- - set -g @batt_full_charge_icon "🌕 "
- - set -g @batt_high_charge_icon "🌖 "
- - set -g @batt_medium_charge_icon "🌗 "
- - set -g @batt_low_charge_icon "🌘 "
+ - primary tier 8 \[95%-100%] (`@batt_tier8_charge_color_primary`): '#00ff00'
+ - primary tier 7 \[80%-95%) (`@batt_tier7_charge_color_primary`): '#55ff00'
+ - primary tier 6 \[65%-80%) (`@batt_tier6_charge_color_primary`): '#aaff00'
+ - primary tier 5 \[50%-65%) (`@batt_tier5_charge_color_primary`): '#ffff00'
+ - primary tier 4 \[35%-50%) (`@batt_tier4_charge_color_primary`): '#ffc000'
+ - primary tier 3 \[20%-35%) (`@batt_tier3_charge_color_primary`): '#ff8000'
+ - primary tier 2 (5%-20%) (`@batt_tier2_charge_color_primary`): '#ff4000'
+ - primary tier 1 \[0%-5%] (`@batt_tier1_charge_color_primary`): '#ff0000'
+ - secondary tier 8 \[95%-100%] (`@batt_tier8_charge_color_secondary`): 'colour0'
+ - secondary tier 7 \[80%-95%) (`@batt_tier7_charge_color_secondary`): 'colour0'
+ - secondary tier 6 \[65%-80%) (`@batt_tier6_charge_color_secondary`): 'colour0'
+ - secondary tier 5 \[50%-65%) (`@batt_tier5_charge_color_secondary`): 'colour0'
+ - secondary tier 4 \[35%-50%) (`@batt_tier4_charge_color_secondary`): 'colour0'
+ - secondary tier 3 \[20%-35%) (`@batt_tier3_charge_color_secondary`): 'colour0'
+ - secondary tier 2 (5%-20%) (`@batt_tier2_charge_color_secondary`): 'colour0'
+ - secondary tier 1 \[0%-5%] (`@batt_tier1_charge_color_secondary`): 'colour0'
 
-Don't forget to reload tmux environment (`$ tmux source-file ~/.tmux.conf`)
-after you do this.
+Status Colors:
+
+ - primary charged (`@batt_color_primary_charged`): 'colour33'
+ - primary charging (`@batt_color_primary_charging`): 'colour33'
+ - primary discharging (`@batt_color_primary_discharging`): 'colour14'
+ - primary attached (`@batt_color_primary_attached`): 'colour201'
+ - primary unknown (`@batt_color_primary_unknown`): 'colour7'
+ - secondary charged (`@batt_color_secondary_charged`): 'colour0'
+ - secondary charging (`@batt_color_secondary_charging`): 'colour0'
+ - secondary discharging (`@batt_color_secondary_discharging`): 'colour0'
+ - secondary attached (`@batt_color_secondary_attached`): 'colour0'
+ - secondary unknown (`@batt_color_secondary_unknown`): 'colour0'
+
+Level of Charge Icons:
+
+ - tier 8 \[95%-100%] (`@batt_tier8_charge_icon`): '█'
+ - tier 7 \[80%-95%) (`@batt_tier7_charge_icon`): '▇'
+ - tier 6 \[65%-80%) (`@batt_tier6_charge_icon`): '▆'
+ - tier 5 \[50%-65%) (`@batt_tier5_charge_icon`): '▅'
+ - tier 4 \[35%-50%) (`@batt_tier4_charge_icon`): '▄'
+ - tier 3 \[20%-35%) (`@batt_tier3_charge_icon`): '▃'
+ - tier 2 (5%-20%) (`@batt_tier2_charge_icon`): '▂'
+ - tier 1 \[0%-5%] (`@batt_tier1_charge_icon`): '▁'
+
+Status Icons:
+
+ - charged (`@batt_icon_charged`): '🔌'
+ - charged - OS X (`@batt_icon_charged`): '🔌'
+ - charging (`@batt_icon_charging`): '🔌'
+ - discharging (`@batt_icon_discharging`): '🔋'
+ - attached (`@batt_icon_attached`): '⚠️'
+ - unknown (`@batt_icon_unknown`): '?'
+
+#### Changing the Defaults
+
+All efforts have been made to make sane defaults, but if you wish to change any of them, add the option to `.tmux.conf`. For example:
+
+```tmux
+set -g @batt_icon_charge_tier8 '🌕'
+set -g @batt_icon_charge_tier7 '🌖'
+set -g @batt_icon_charge_tier6 '🌖'
+set -g @batt_icon_charge_tier5 '🌗'
+set -g @batt_icon_charge_tier4 '🌗'
+set -g @batt_icon_charge_tier3 '🌘'
+set -g @batt_icon_charge_tier2 '🌘'
+set -g @batt_icon_charge_tier1 '🌑'
+set -g @batt_icon_status_charged '🔋'
+set -g @batt_icon_status_charging '⚡'
+set -g @batt_icon_status_discharging '👎'
+set -g @batt_color_status_primary_charged '#3daee9'
+set -g @batt_color_status_primary_charging '#3daee9'
+```
+
+Don't forget to reload the tmux environment after you do this by either hitting `<prefix> + I` if tmux battery is installed via the tmux plugin manager, or by typing `tmux source-file ~/.tmux.conf` in the terminal if tmux battery is manually installed.
 
 *Warning*: The battery icon change most likely will not be instant. When you un-plug the power cord, it will take some time (15 - 60 seconds) for the icon to change. This depends on the `status-interval` tmux option. Setting it to 15 seconds should be good enough.
 
-## Shortened remaining output
+## Examples
 
-To shorten the output of `#{battery_remain}`, set the following variable:
+These are all examples of the default plugin color and icon schemes paired with the default tmux color scheme using the following `status-right` and `status-right-length` settings in `.tmux.conf`
 
-    set -g @batt_remain_short true
+```tmux
+set -g status-right 'Colors: #{battery_color_bg}bg#[default] #{battery_color_fg}fg#[default] #{battery_color_charge_bg}charge_bg#[default] #{battery_color_charge_fg}charge_fg#[default] #{battery_color_status_bg}status_bg#[default] #{battery_color_status_fg}status_fg#[default] | Graph: #{battery_graph} | Icon: #{battery_icon} | Charge Icon: #{battery_icon_charge} | Status Icon: #{battery_icon_status} | Percent: #{battery_percentage} | Remain: #{battery_remain}'
+set -g status-right-length '150'
+```
 
-This will shorten the time remaining (when charging or discharging) to `~H:MM`.
+Battery charging at tier 8 \[95%-100%]:<br>
+![battery-charging-tier8](./screenshots/battery_charging_tier8.png)
+
+Battery charging at tier 7 \[80%-95%):<br>
+![battery-charging-tier7](./screenshots/battery_charging_tier7.png)
+
+Battery charging at tier 6 \[65%-80%):<br>
+![battery-charging-tier6](./screenshots/battery_charging_tier6.png)
+
+Battery charging at tier 5 \[50%-65%):<br>
+![battery-charging-tier5](./screenshots/battery_charging_tier5.png)
+
+Battery charging at tier 4 \[35%-50%):<br>
+![battery-charging-tier4](./screenshots/battery_charging_tier4.png)
+
+Battery charging at tier 3 \[20%-35%):<br>
+![battery-charging-tier3](./screenshots/battery_charging_tier3.png)
+
+Battery charging at tier 2 (5%-20%):<br>
+![battery-charging-tier2](./screenshots/battery_charging_tier2.png)
+
+Battery charging at tier 1 \[0%-5%]:<br>
+![battery-charging-tier1](./screenshots/battery_charging_tier1.png)
+
+Battery discharging at tier 8 \[95%-100%]:<br>
+![battery-discharging-tier8](./screenshots/battery_discharging_tier8.png)
+
+Battery discharging at tier 7 \[80%-95%):<br>
+![battery-discharging-tier7](./screenshots/battery_discharging_tier7.png)
+
+Battery discharging at tier 6 \[65%-80%):<br>
+![battery-discharging-tier6](./screenshots/battery_discharging_tier6.png)
+
+Battery discharging at tier 5 \[50%-65%):<br>
+![battery-discharging-tier5](./screenshots/battery_discharging_tier5.png)
+
+Battery discharging at tier 4 \[35%-50%):<br>
+![battery-discharging-tier4](./screenshots/battery_discharging_tier4.png)
+
+Battery discharging at tier 3 \[20%-35%):<br>
+![battery-discharging-tier3](./screenshots/battery_discharging_tier3.png)
+
+Battery discharging at tier 2 (5%-20%):<br>
+![battery-discharging-tier2](./screenshots/battery_discharging_tier2.png)
+
+Battery discharging at tier 1 \[0%-5%]:<br>
+![battery-discharging-tier1](./screenshots/battery_discharging_tier1.png)
+
+Battery in 'attached' status:<br>
+![battery-status-attached](./screenshots/battery_status_attached.png)
+
+Battery in an unknown status:<br>
+![battery-status-unknown](./screenshots/battery_status_unknown.png)
 
 ### Tmux Plugins
 

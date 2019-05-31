@@ -5,17 +5,31 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/helpers.sh"
 
 print_graph() {
-	if [ -z "$1" ]; then
-		echo ""
-	elif [ "$1" -lt "20" ]; then
-		echo "▁"
-	elif [ "$1" -lt "40" ]; then
-		echo "▂"
-	elif [ "$1" -lt "60" ]; then
-		echo "▃"
-	elif [ "$1" -lt "80" ]; then
-		echo "▅"
+	local percentage=$1
+	if [ $percentage -gt 5 ]; then
+		printf "▁"
 	else
+		printf " "
+	fi
+	if [ $percentage -ge 25 ]; then
+		printf "▂"
+	else
+		printf " "
+	fi
+	if [ $percentage -ge 50 ]; then
+		printf "▄"
+	else
+		printf " "
+	fi
+	if [ $percentage -ge 75 ]; then
+		printf "▆"
+	else
+		printf " "
+	fi
+	if [ $percentage -ge 95 ]; then
+		printf "█"
+	else
+		printf " "
 		echo "▇"
 	fi
 }
