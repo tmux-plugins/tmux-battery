@@ -94,22 +94,22 @@ Also, a note about the `@batt_color_...` options: `@batt_color_..._primary` opti
 
 Level of Charge Colors:
 
- - primary tier 8 \[95%-100%] (`@batt_tier8_charge_color_primary`): '#00ff00'
- - primary tier 7 \[80%-95%) (`@batt_tier7_charge_color_primary`): '#55ff00'
- - primary tier 6 \[65%-80%) (`@batt_tier6_charge_color_primary`): '#aaff00'
- - primary tier 5 \[50%-65%) (`@batt_tier5_charge_color_primary`): '#ffff00'
- - primary tier 4 \[35%-50%) (`@batt_tier4_charge_color_primary`): '#ffc000'
- - primary tier 3 \[20%-35%) (`@batt_tier3_charge_color_primary`): '#ff8000'
- - primary tier 2 (5%-20%) (`@batt_tier2_charge_color_primary`): '#ff4000'
- - primary tier 1 \[0%-5%] (`@batt_tier1_charge_color_primary`): '#ff0000'
- - secondary tier 8 \[95%-100%] (`@batt_tier8_charge_color_secondary`): 'colour0'
- - secondary tier 7 \[80%-95%) (`@batt_tier7_charge_color_secondary`): 'colour0'
- - secondary tier 6 \[65%-80%) (`@batt_tier6_charge_color_secondary`): 'colour0'
- - secondary tier 5 \[50%-65%) (`@batt_tier5_charge_color_secondary`): 'colour0'
- - secondary tier 4 \[35%-50%) (`@batt_tier4_charge_color_secondary`): 'colour0'
- - secondary tier 3 \[20%-35%) (`@batt_tier3_charge_color_secondary`): 'colour0'
- - secondary tier 2 (5%-20%) (`@batt_tier2_charge_color_secondary`): 'colour0'
- - secondary tier 1 \[0%-5%] (`@batt_tier1_charge_color_secondary`): 'colour0'
+ - primary tier 8 \[95%-100%] (`@batt_color_charge_primary_tier8`): '#00ff00'
+ - primary tier 7 \[80%-95%) (`@batt_color_charge_primary_tier7`): '#55ff00'
+ - primary tier 6 \[65%-80%) (`@batt_color_charge_primary_tier6`): '#aaff00'
+ - primary tier 5 \[50%-65%) (`@batt_color_charge_primary_tier5`): '#ffff00'
+ - primary tier 4 \[35%-50%) (`@batt_color_charge_primary_tier4`): '#ffc000'
+ - primary tier 3 \[20%-35%) (`@batt_color_charge_primary_tier3`): '#ff8000'
+ - primary tier 2 (5%-20%) (`@batt_color_charge_primary_tier2`): '#ff4000'
+ - primary tier 1 \[0%-5%] (`@batt_color_charge_primary_tier1`): '#ff0000'
+ - secondary tier 8 \[95%-100%] (`@batt_color_charge_secondary_tier8`): 'colour0'
+ - secondary tier 7 \[80%-95%) (`@batt_color_charge_secondary_tier7`): 'colour0'
+ - secondary tier 6 \[65%-80%) (`@batt_color_charge_secondary_tier6`): 'colour0'
+ - secondary tier 5 \[50%-65%) (`@batt_color_charge_secondary_tier5`): 'colour0'
+ - secondary tier 4 \[35%-50%) (`@batt_color_charge_secondary_tier4`): 'colour0'
+ - secondary tier 3 \[20%-35%) (`@batt_color_charge_secondary_tier3`): 'colour0'
+ - secondary tier 2 (5%-20%) (`@batt_color_charge_secondary_tier2`): 'colour0'
+ - secondary tier 1 \[0%-5%] (`@batt_color_charge_secondary_tier1`): 'colour0'
 
 Status Colors:
 
@@ -126,14 +126,14 @@ Status Colors:
 
 Level of Charge Icons:
 
- - tier 8 \[95%-100%] (`@batt_tier8_charge_icon`): '█'
- - tier 7 \[80%-95%) (`@batt_tier7_charge_icon`): '▇'
- - tier 6 \[65%-80%) (`@batt_tier6_charge_icon`): '▆'
- - tier 5 \[50%-65%) (`@batt_tier5_charge_icon`): '▅'
- - tier 4 \[35%-50%) (`@batt_tier4_charge_icon`): '▄'
- - tier 3 \[20%-35%) (`@batt_tier3_charge_icon`): '▃'
- - tier 2 (5%-20%) (`@batt_tier2_charge_icon`): '▂'
- - tier 1 \[0%-5%] (`@batt_tier1_charge_icon`): '▁'
+ - tier 8 \[95%-100%] (`@batt_icon_charge_tier8`): '█'
+ - tier 7 \[80%-95%) (`@batt_icon_charge_tier7`): '▇'
+ - tier 6 \[65%-80%) (`@batt_icon_charge_tier6`): '▆'
+ - tier 5 \[50%-65%) (`@batt_icon_charge_tier5`): '▅'
+ - tier 4 \[35%-50%) (`@batt_icon_charge_tier4`): '▄'
+ - tier 3 \[20%-35%) (`@batt_icon_charge_tier3`): '▃'
+ - tier 2 (5%-20%) (`@batt_icon_charge_tier2`): '▂'
+ - tier 1 \[0%-5%] (`@batt_icon_charge_tier1`): '▁'
 
 Status Icons:
 
