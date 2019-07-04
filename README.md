@@ -57,8 +57,8 @@ set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percen
 
 ### Supported Format Strings
 
- - `#{battery_color_bg}` - will set the background color of the status bar based on the battery charge level and status
- - `#{battery_color_fg}` - will set the foreground color of the status bar based on the battery charge level and status
+ - `#{battery_color_bg}` - will set the background color of the status bar based on the battery charge level if discharging and status otherwise
+ - `#{battery_color_fg}` - will set the foreground color of the status bar based on the battery charge level if discharging and status otherwise
  - `#{battery_color_charge_bg}` - will set the background color of the status bar based solely on the battery charge level
  - `#{battery_color_charge_fg}` - will set the foreground color of the status bar based solely on the battery charge level
  - `#{battery_color_status_bg}` - will set the background color of the status bar based solely on the battery status
@@ -90,7 +90,7 @@ By default, the following colors and icons are used. (The exact colors displayed
 
 Please be aware that the 'level of charge' as noted below (e.g. `[80%-95%)`) uses interval notation. If you are unfamiliar with it, <a href="https://en.wikipedia.org/wiki/Bracket_(mathematics)#Intervals">check it out here</a>.
 
-Also, a note about the `@batt_color_...` options: `@batt_color_..._primary` options are what will be displayed in the main `bg` or `fg` format strings you choose - e.g. if you use `#{battery_color_bg}`, the `@batt_color_..._primary` color you choose will be the background. Likewise, the corresponding `@batt_color_..._secondary` color will be the foreground.
+Also, a note about the `@batt_color_...` options: `@batt_color_..._primary_...` options are what will be displayed in the main `bg` or `fg` format strings you choose - e.g. if you use `#{battery_color_bg}`, the `@batt_color_..._primary_...` colors you choose will be the background. Likewise, the corresponding `@batt_color_..._secondary_...` color will be the foreground.
 
 Level of Charge Colors:
 
@@ -113,16 +113,16 @@ Level of Charge Colors:
 
 Status Colors:
 
- - primary charged (`@batt_color_primary_charged`): 'colour33'
- - primary charging (`@batt_color_primary_charging`): 'colour33'
- - primary discharging (`@batt_color_primary_discharging`): 'colour14'
- - primary attached (`@batt_color_primary_attached`): 'colour201'
- - primary unknown (`@batt_color_primary_unknown`): 'colour7'
- - secondary charged (`@batt_color_secondary_charged`): 'colour0'
- - secondary charging (`@batt_color_secondary_charging`): 'colour0'
- - secondary discharging (`@batt_color_secondary_discharging`): 'colour0'
- - secondary attached (`@batt_color_secondary_attached`): 'colour0'
- - secondary unknown (`@batt_color_secondary_unknown`): 'colour0'
+ - primary charged (`@batt_color_status_primary_charged`): 'colour33'
+ - primary charging (`@batt_color_status_primary_charging`): 'colour33'
+ - primary discharging (`@batt_color_status_primary_discharging`): 'colour14'
+ - primary attached (`@batt_color_status_primary_attached`): 'colour201'
+ - primary unknown (`@batt_color_status_primary_unknown`): 'colour7'
+ - secondary charged (`@batt_color_status_secondary_charged`): 'colour0'
+ - secondary charging (`@batt_color_status_secondary_charging`): 'colour0'
+ - secondary discharging (`@batt_color_status_secondary_discharging`): 'colour0'
+ - secondary attached (`@batt_color_status_secondary_attached`): 'colour0'
+ - secondary unknown (`@batt_color_status_secondary_unknown`): 'colour0'
 
 Level of Charge Icons:
 
@@ -137,12 +137,12 @@ Level of Charge Icons:
 
 Status Icons:
 
- - charged (`@batt_icon_charged`): '🔌'
- - charged - OS X (`@batt_icon_charged`): '🔌'
- - charging (`@batt_icon_charging`): '🔌'
- - discharging (`@batt_icon_discharging`): '🔋'
- - attached (`@batt_icon_attached`): '⚠️'
- - unknown (`@batt_icon_unknown`): '?'
+ - charged (`@batt_icon_status_charged`): '🔌'
+ - charged - OS X (`@batt_icon_status_charged`): '🔌'
+ - charging (`@batt_icon_status_charging`): '🔌'
+ - discharging (`@batt_icon_status_discharging`): '🔋'
+ - attached (`@batt_icon_status_attached`): '⚠️'
+ - unknown (`@batt_icon_status_unknown`): '?'
 
 #### Changing the Defaults
 
