@@ -42,8 +42,8 @@ recommend_charging() {
         if [[ "$(battery_status)" == "discharging" ]]; then
             echo "CHARGE IMMEDIATELY"
         fi
-    elif [[ percentage -gt 80 ]]; then
-        if [[ "$(battery_status)" == "charging" ]]; then
+    elif [[ $percentage -gt 80 ]]; then
+        if [[ "$(battery_status)" != "discharging" ]]; then
             echo "STOP CHARGING"
         fi
     fi
