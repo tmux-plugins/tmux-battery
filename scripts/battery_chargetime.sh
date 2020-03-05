@@ -36,18 +36,15 @@ get_percent() {
 }
 
 recommend_charging() {
-    local percentage = $(get_percent | sed -e 's/%//g')
-    if [[ percentage -le 20 ]]; then
-        if [[ $(battery_status) == "discharging" ]]; then
-            echo "CHARGE IMMEDIATELY FOOL"
-        else
-            echo "NOT REQUIRED"
+    local percentage=$(get_percent)
+    percentage=$(echo ${percentage} | sed -e 's/%//g')
+    if [[ $percentage -lt 20 ]]; then
+        if [[ "$(battery_status)" == "discharging" ]]; then
+            echo "CHARGE IMMEDIATELY"
         fi
-    elif [[ percentage -ge 80 ]]; then
-        if [[ $(battery_status) == "charging" ]]; then
-            echo "REMOVE CHARGING"
-        else
-            echo "NOT REQUIRED"
+    elif [[ percentage -gt 80 ]]; then
+        if [[ "$(battery_status)" == "charging" ]]; then
+            echo "STOP CHARGING"
         fi
     fi
 }
@@ -56,4 +53,3 @@ main() {
 	recommend_charging
 }
 main
-
