@@ -17,6 +17,7 @@ battery_interpolation=(
 	"\#{battery_icon_status}"
 	"\#{battery_percentage}"
 	"\#{battery_remain}"
+    "\#{battery_should_charge}"
 )
 
 battery_commands=(
@@ -32,6 +33,7 @@ battery_commands=(
 	"#($CURRENT_DIR/scripts/battery_icon_status.sh)"
 	"#($CURRENT_DIR/scripts/battery_percentage.sh)"
 	"#($CURRENT_DIR/scripts/battery_remain.sh)"
+    "#(~/Documents/programming/tmux-battery/scripts/battery_chargetime.sh)"
 )
 
 set_tmux_option() {
