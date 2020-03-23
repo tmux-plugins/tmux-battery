@@ -29,7 +29,12 @@ command_exists() {
 
 battery_status() {
 	if command_exists "pmset"; then
-		pmset -g batt | awk -F '; *' 'NR==2 { print $2 }'
+		RES=`pmset -g batt | awk -F '; *' 'NR==2 { print $2 }'`
+        if [ "$RES" = "" ];then
+            echo "Now drawing from 'AC Power'\n-InternalBattery-0 100%; charged; 0:00 remaining"
+        else
+            echo "$RES"
+        fi
 	elif command_exists "acpi"; then
 		acpi -b | awk '{gsub(/,/, ""); print tolower($3); exit}'
 	elif command_exists "upower"; then
