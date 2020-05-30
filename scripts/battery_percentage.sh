@@ -36,6 +36,25 @@ print_battery_percentage() {
 }
 
 main() {
-	print_battery_percentage
+	local bat_pct
+	local bat_pct_raw
+
+	bat_pct_raw="$(print_battery_percentage)"
+	bat_pct="${bat_pct_raw//%/}"
+
+	if ! [[ "$bat_pct" =~ ^[0-9]+$ ]]
+	then
+		# Display bat percentage string if not a number
+		echo -n "$bat_pct_raw"
+		return
+	fi
+
+	local hide_if_above
+	hide_if_above="$(get_tmux_option "@batt_percentage_hide_if_above")"
+
+	if [[ "$bat_pct" -lt "${hide_if_above}" ]]
+	then
+		echo -n "$bat_pct_raw"
+	fi
 }
 main
