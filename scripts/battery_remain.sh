@@ -17,7 +17,7 @@ battery_discharging() {
 
 battery_charged() {
 	local status="$(battery_status)"
-	[[ $status =~ (charged) ]]
+	[[ $status =~ (charged) || $status =~ (full) ]]
 }
 
 
