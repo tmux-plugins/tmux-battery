@@ -110,7 +110,9 @@ acpi_battery_remaining_time() {
 }
 
 print_battery_remain() {
-	if command_exists "pmset"; then
+	if is_wsl; then
+		echo "?"	# currently unsupported on WSL
+	elif command_exists "pmset"; then
 		pmset_battery_remaining_time
 	elif command_exists "acpi"; then
 		acpi_battery_remaining_time

@@ -24,7 +24,7 @@ is_chrome() {
 
 is_wsl() {
 	version=$(</proc/version)
-	if [[ "$version" == *"Microsoft"* ]]; then
+	if [[ "$version" == *"Microsoft"* || "$version" == *"microsoft"* ]]; then
 		return 0
 	else
 		return 1
@@ -38,7 +38,9 @@ command_exists() {
 
 battery_status() {
 	if is_wsl; then
-		cat /sys/class/power_supply/battery/status | awk '{print tolower($0);}'
+		local battery
+		battery=$(find /sys/class/power_supply/*/status | tail -n1)
+		awk '{print tolower($0);}' "$battery"
 	elif command_exists "pmset"; then
 		pmset -g batt | awk -F '; *' 'NR==2 { print $2 }'
 	elif command_exists "acpi"; then
