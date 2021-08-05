@@ -11,7 +11,7 @@ print_battery_percentage() {
 		battery=$(find /sys/class/power_supply/*/capacity | tail -n1)
 		cat "$battery"
 	elif command_exists "pmset"; then
-		pmset -g batt | grep -o "[0-9]\{1,3\}%"
+		pmset -g batt | grep --color=never -o "[0-9]\{1,3\}%"
 	elif command_exists "acpi"; then
 		acpi -b | grep -m 1 -Eo "[0-9]+%"
 	elif command_exists "upower"; then
