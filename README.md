@@ -1,3 +1,9 @@
+# My changes
+
+I added feature "battery_smart", otherwise same as original
+
+
+
 # Tmux battery status
 
 Enables displaying battery percentage and status icon in tmux status-right.
