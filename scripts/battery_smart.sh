@@ -26,12 +26,12 @@ main() {
     remain=$(print_battery_remain)
 
     if [ "$status" != "discharging" ] && [ $percentage -gt 98 ]; then
-	# If almost full or better and plugged in, we do not need to see
-	# details about battery. An icon indicating power is plugged in,
-	# should be enough
-	printf "$icon_status"
+        # If almost full or better and plugged in, we do not need to see
+        # details about battery. An icon indicating power is plugged in,
+        # should be enough
+        printf "$icon_status"
     else
-	printf "${color_bg} $icon_status ${percentage} ${remain} #[default]"
+        printf "${color_bg} $icon_status ${percentage} ${remain} #[default]"
     fi
 }
 

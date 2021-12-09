@@ -45,6 +45,6 @@ print_battery_status_fg() {
 
 main() {
     get_charge_color_settings
-	print_battery_status_fg
+    print_battery_status_fg
 }
 main
