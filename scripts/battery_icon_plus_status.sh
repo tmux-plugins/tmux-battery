@@ -5,14 +5,12 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/helpers.sh"
 
 # icons charging  ,  ,  ,  ,  , ,    
-# icons         100, 90, 80, 60, 40, 30, 20 %
+#                100, 90, 80,  60,  40,  30,  20 %
 
 # icons normal  , ,  ,  ,  ,  ,  ,  ,  
-# icons       100, 90, 80, 70, 60, 50, 40, 20, 10 %
+#             100,  90,  80, 70,  60,  50,  40,  20, 10 %
 
-
-
-
+# unfortunately there's a mismatch there are no more available charging icons, there are two that are duplicated in the variables
 
 # script global variables
 icon_charge_tier8=''
@@ -61,65 +59,64 @@ get_icon_charge_settings() {
 print_icon_charge_plus_status() {
 	percentage=$($CURRENT_DIR/battery_percentage.sh | sed -e 's/%//')
     status=$(battery_status | awk '{print $1;}')
-    if [ $status == 'charging' ]; then
-        
-        if [ $percentage -ge 95 -o "$percentage" == "" ]; then
-		    # if percentage is empty, assume it's a desktop         # maximum
-		    printf "$icon_charge_tier8_charging"
-	
-        elif [ $percentage -ge 80 ]; then
-		    printf "$icon_charge_tier7_charging"
+    
+	if [ $status == 'charging' ]; then
 
-	    elif [ $percentage -ge 65 ]; then
-		    printf "$icon_charge_tier6_charging"
-	
-        elif [ $percentage -ge 50 ]; then
-	    	printf "$icon_charge_tier5_charging"
-	
-        elif [ $percentage -ge 35 ]; then
-    		printf "$icon_charge_tier4_charging"
+		if [ $percentage -ge 95 -o "$percentage" == "" ]; then
+			# if percentage is empty, assume it's a desktop
+			printf "$icon_charge_tier8_charging"
 
-        elif [ $percentage -ge 20 ]; then
-    		printf "$icon_charge_tier3_charging"
-	
-        elif [ $percentage -gt 5 ]; then 
-    		printf "$icon_charge_tier2_charging"
-	
-        else
-    		printf "$icon_charge_tier1_charging"                             # minimun
+		elif [ $percentage -ge 80 ]; then
+			printf "$icon_charge_tier7_charging"
+
+		elif [ $percentage -ge 65 ]; then
+			printf "$icon_charge_tier6_charging"
+
+		elif [ $percentage -ge 50 ]; then
+			printf "$icon_charge_tier5_charging"
+
+		elif [ $percentage -ge 35 ]; then
+			printf "$icon_charge_tier4_charging"
+
+		elif [ $percentage -ge 20 ]; then
+			printf "$icon_charge_tier3_charging"
+
+		elif [ $percentage -gt 5 ]; then 
+			printf "$icon_charge_tier2_charging"
+
+		else
+			printf "$icon_charge_tier1_charging"
+		fi
+
+	else
+
+		if [ $percentage -ge 95 -o "$percentage" == "" ]; then
+		    # if percentage is empty, assume it's a desktop
+		    printf "$icon_charge_tier8"
+
+		elif [ $percentage -ge 80 ]; then
+		    printf "$icon_charge_tier7"
+
+		elif [ $percentage -ge 65 ]; then
+		    printf "$icon_charge_tier6"
+
+		elif [ $percentage -ge 50 ]; then
+		    printf "$icon_charge_tier5"
+
+		elif [ $percentage -ge 35 ]; then
+		    printf "$icon_charge_tier4"
+
+		elif [ $percentage -ge 20 ]; then
+		    printf "$icon_charge_tier3"
+
+		elif [ $percentage -gt 5 ]; then 
+		    printf "$icon_charge_tier2"
+
+		else
+		    printf "$icon_charge_tier1"
+		fi
     	fi
-  
-    else
-
-        if [ $percentage -ge 95 -o "$percentage" == "" ]; then
-            # if percentage is empty, assume it's a desktop         # maximum
-            printf "$icon_charge_tier8"
-
-        elif [ $percentage -ge 80 ]; then
-            printf "$icon_charge_tier7"
-
-        elif [ $percentage -ge 65 ]; then
-            printf "$icon_charge_tier6"
-
-        elif [ $percentage -ge 50 ]; then
-            printf "$icon_charge_tier5"
-
-        elif [ $percentage -ge 35 ]; then
-            printf "$icon_charge_tier4"
-
-        elif [ $percentage -ge 20 ]; then
-            printf "$icon_charge_tier3"
-
-        elif [ $percentage -gt 5 ]; then 
-            printf "$icon_charge_tier2"
-
-        else
-            printf "$icon_charge_tier1"                             # minimun
-        fi
-    fi
 }
-
-
 
 
 main() {
