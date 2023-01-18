@@ -11,6 +11,7 @@ source "$CURRENT_DIR/helpers.sh"
 #             100,  90,  80, 70,  60,  50,  40,  20, 10 %
 
 # unfortunately there's a mismatch there are no more available charging icons, there are two that are duplicated in the variables
+# this requires a patched font (nerdfont)
 
 # script global variables
 icon_live_charge_tier8=''
