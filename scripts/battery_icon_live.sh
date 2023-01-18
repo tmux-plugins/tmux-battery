@@ -13,46 +13,46 @@ source "$CURRENT_DIR/helpers.sh"
 # unfortunately there's a mismatch there are no more available charging icons, there are two that are duplicated in the variables
 
 # script global variables
-icon_charge_tier8=''
-icon_charge_tier7=''
-icon_charge_tier6=''
-icon_charge_tier5=''
-icon_charge_tier4=''
-icon_charge_tier3=''
-icon_charge_tier2=''
-icon_charge_tier1=''
+icon_live_charge_tier8=''
+icon_live_charge_tier7=''
+icon_live_charge_tier6=''
+icon_live_charge_tier5=''
+icon_live_charge_tier4=''
+icon_live_charge_tier3=''
+icon_live_charge_tier2=''
+icon_live_charge_tier1=''
 
 # script default variables
-icon_charge_tier8_default=''
-icon_charge_tier7_default=''
-icon_charge_tier6_default=''
-icon_charge_tier5_default=''
-icon_charge_tier4_default=''
-icon_charge_tier3_default=''
-icon_charge_tier2_default=''
-icon_charge_tier1_default=''
+icon_live_charge_tier8_default=''
+icon_live_charge_tier7_default=''
+icon_live_charge_tier6_default=''
+icon_live_charge_tier5_default=''
+icon_live_charge_tier4_default=''
+icon_live_charge_tier3_default=''
+icon_live_charge_tier2_default=''
+icon_live_charge_tier1_default=''
 
-icon_charge_tier8_charging=''
-icon_charge_tier7_charging=''
-icon_charge_tier6_charging=''
-icon_charge_tier5_charging=''
-icon_charge_tier4_charging=''
-icon_charge_tier3_charging=''
-icon_charge_tier2_charging=''
-icon_charge_tier1_charging=''
+icon_live_charge_tier8_charging=''
+icon_live_charge_tier7_charging=''
+icon_live_charge_tier6_charging=''
+icon_live_charge_tier5_charging=''
+icon_live_charge_tier4_charging=''
+icon_live_charge_tier3_charging=''
+icon_live_charge_tier2_charging=''
+icon_live_charge_tier1_charging=''
 
 
 
 # icons are set as script global variables
 get_icon_charge_settings() {
-	icon_charge_tier8=$(get_tmux_option "@batt_icon_charge_tier8" "$icon_charge_tier8_default")
-	icon_charge_tier7=$(get_tmux_option "@batt_icon_charge_tier7" "$icon_charge_tier7_default")
-	icon_charge_tier6=$(get_tmux_option "@batt_icon_charge_tier6" "$icon_charge_tier6_default")
-	icon_charge_tier5=$(get_tmux_option "@batt_icon_charge_tier5" "$icon_charge_tier5_default")
-	icon_charge_tier4=$(get_tmux_option "@batt_icon_charge_tier4" "$icon_charge_tier4_default")
-	icon_charge_tier3=$(get_tmux_option "@batt_icon_charge_tier3" "$icon_charge_tier3_default")
-	icon_charge_tier2=$(get_tmux_option "@batt_icon_charge_tier2" "$icon_charge_tier2_default")
-	icon_charge_tier1=$(get_tmux_option "@batt_icon_charge_tier1" "$icon_charge_tier1_default")
+	icon_live_charge_tier8=$(get_tmux_option "@batt_icon_live_charge_tier8" "$icon_live_charge_tier8_default")
+	icon_live_charge_tier7=$(get_tmux_option "@batt_icon_live_charge_tier7" "$icon_live_charge_tier7_default")
+	icon_live_charge_tier6=$(get_tmux_option "@batt_icon_live_charge_tier6" "$icon_live_charge_tier6_default")
+	icon_live_charge_tier5=$(get_tmux_option "@batt_icon_live_charge_tier5" "$icon_live_charge_tier5_default")
+	icon_live_charge_tier4=$(get_tmux_option "@batt_icon_live_charge_tier4" "$icon_live_charge_tier4_default")
+	icon_live_charge_tier3=$(get_tmux_option "@batt_icon_live_charge_tier3" "$icon_live_charge_tier3_default")
+	icon_live_charge_tier2=$(get_tmux_option "@batt_icon_live_charge_tier2" "$icon_live_charge_tier2_default")
+	icon_live_charge_tier1=$(get_tmux_option "@batt_icon_live_charge_tier1" "$icon_live_charge_tier1_default")
 }
 
 
@@ -64,56 +64,56 @@ print_icon_charge_plus_status() {
 
 		if [ $percentage -ge 95 -o "$percentage" == "" ]; then
 			# if percentage is empty, assume it's a desktop
-			printf "$icon_charge_tier8_charging"
+			printf "$icon_live_charge_tier8_charging"
 
 		elif [ $percentage -ge 80 ]; then
-			printf "$icon_charge_tier7_charging"
+			printf "$icon_live_charge_tier7_charging"
 
 		elif [ $percentage -ge 65 ]; then
-			printf "$icon_charge_tier6_charging"
+			printf "$icon_live_charge_tier6_charging"
 
 		elif [ $percentage -ge 50 ]; then
-			printf "$icon_charge_tier5_charging"
+			printf "$icon_live_charge_tier5_charging"
 
 		elif [ $percentage -ge 35 ]; then
-			printf "$icon_charge_tier4_charging"
+			printf "$icon_live_charge_tier4_charging"
 
 		elif [ $percentage -ge 20 ]; then
-			printf "$icon_charge_tier3_charging"
+			printf "$icon_live_charge_tier3_charging"
 
 		elif [ $percentage -gt 5 ]; then 
-			printf "$icon_charge_tier2_charging"
+			printf "$icon_live_charge_tier2_charging"
 
 		else
-			printf "$icon_charge_tier1_charging"
+			printf "$icon_live_charge_tier1_charging"
 		fi
 
 	else
 
 		if [ $percentage -ge 95 -o "$percentage" == "" ]; then
 		    # if percentage is empty, assume it's a desktop
-		    printf "$icon_charge_tier8"
+		    printf "$icon_live_charge_tier8"
 
 		elif [ $percentage -ge 80 ]; then
-		    printf "$icon_charge_tier7"
+		    printf "$icon_live_charge_tier7"
 
 		elif [ $percentage -ge 65 ]; then
-		    printf "$icon_charge_tier6"
+		    printf "$icon_live_charge_tier6"
 
 		elif [ $percentage -ge 50 ]; then
-		    printf "$icon_charge_tier5"
+		    printf "$icon_live_charge_tier5"
 
 		elif [ $percentage -ge 35 ]; then
-		    printf "$icon_charge_tier4"
+		    printf "$icon_live_charge_tier4"
 
 		elif [ $percentage -ge 20 ]; then
-		    printf "$icon_charge_tier3"
+		    printf "$icon_live_charge_tier3"
 
 		elif [ $percentage -gt 5 ]; then 
-		    printf "$icon_charge_tier2"
+		    printf "$icon_live_charge_tier2"
 
 		else
-		    printf "$icon_charge_tier1"
+		    printf "$icon_live_charge_tier1"
 		fi
     	fi
 }
