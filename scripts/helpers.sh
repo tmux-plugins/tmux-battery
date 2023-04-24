@@ -38,9 +38,11 @@ command_exists() {
 
 battery_status() {
 	if is_wsl; then
-		local battery
-		battery=$(find /sys/class/power_supply/*/status | tail -n1)
-		awk '{print tolower($0);}' "$battery"
+		if [ -e /sys/class/power_supply/*/status ]; then
+			local battery
+			battery=$(find /sys/class/power_supply/*/status | tail -n1)
+			awk '{print tolower($0);}' "$battery"
+		fi
 	elif command_exists "pmset"; then
 		pmset -g batt | awk -F '; *' 'NR==2 { print $2 }'
 	elif command_exists "acpi"; then
