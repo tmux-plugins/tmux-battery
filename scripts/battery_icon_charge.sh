@@ -38,7 +38,7 @@ get_icon_charge_settings() {
 
 print_icon_charge() {
 	percentage=$($CURRENT_DIR/battery_percentage.sh | sed -e 's/%//')
-	if [ $percentage -ge 95 -o "$percentage" == "" ]; then
+	if [[ $percentage -ge 95 || -z "$percentage" ]]; then
 		# if percentage is empty, assume it's a desktop
 		printf "$icon_charge_tier8"
 	elif [ $percentage -ge 80 ]; then
