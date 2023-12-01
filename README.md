@@ -69,6 +69,7 @@ set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percen
  - `#{battery_icon_status}` - will display a battery status icon
  - `#{battery_percentage}` - will show battery percentage
  - `#{battery_remain}` - will show remaining time of battery charge\*
+ = `#{battery_charging_watts}` - will display the current watts supplied (currently supported only on OSX)
 
 \* These format strings can be further customized via options as described below.
 
