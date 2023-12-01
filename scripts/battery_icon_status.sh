@@ -39,7 +39,10 @@ get_icon_status_settings() {
 
 print_icon_status() {
 	local status=$1
-	if [[ $status =~ (charged) || $status =~ (full) ]]; then
+	if [[ is_wsl && -z $status ]]; then
+		# WSL env with no battery -> _probably_ gonna be a desktop!
+		printf "$icon_status_charged"
+	elif [[ $status =~ (charged) || $status =~ (full) ]]; then
 		printf "$icon_status_charged"
 	elif [[ $status =~ (^charging) ]]; then
 		printf "$icon_status_charging"
