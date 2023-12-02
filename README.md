@@ -68,7 +68,8 @@ set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percen
  - `#{battery_icon_charge}` - will display a battery charge icon
  - `#{battery_icon_status}` - will display a battery status icon
  - `#{battery_percentage}` - will show battery percentage
- - `#{battery_remain}` - will show remaining time of battery charge\*
+ - `#{battery_remain}` - will show remaining time of battery charge
+ - `#{battery_icon_live}` - will show the a charging battery icon or a normal one depending if the device is charging
 
 \* These format strings can be further customized via options as described below.
 
