@@ -78,11 +78,16 @@ set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percen
 
  - `@batt_remain_short`: 'true' / 'false' - This will shorten the time remaining (when charging or discharging) to `~H:MM`.
 
+`#{battery_percentage}`
+
+ - `@batt_percentage_hide_if_above`: integer (`[0-100]`) - Hides the battery percentage indicator if the battery level is above this threshold.
+
 ### Defaults
 
 #### Options
 
  - `@batt_remain_short`: 'false'
+ - `@batt_percentage_hide_if_above`: '' (always display battery percentage)
 
 #### Icons/Colors
 
