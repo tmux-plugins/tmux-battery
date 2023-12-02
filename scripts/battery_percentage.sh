@@ -22,7 +22,7 @@ print_battery_percentage() {
 		fi
 		local percentage=$(upower -i $battery | awk '/percentage:/ {print $2}')
 		if [ "$percentage" ]; then
-			echo ${percentage%.*%}
+			echo "$(float2int $percentage)%"
 			return
 		fi
 		local energy

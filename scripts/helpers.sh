@@ -61,3 +61,14 @@ battery_status() {
 		fi
 	fi
 }
+
+float2int() {
+	local float="$1"
+	if [[ $float =~ "," ]]; then
+		echo ${float%,*}
+	elif [[ $float =~ "." ]]; then
+		echo ${float%.*}
+	else
+		echo ${float//%}
+	fi
+}
