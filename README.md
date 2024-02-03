@@ -90,7 +90,7 @@ By default, the following colors and icons are used. (The exact colors displayed
 
 Please be aware that the 'level of charge' as noted below (e.g. `[80%-95%)`) uses interval notation. If you are unfamiliar with it, <a href="https://en.wikipedia.org/wiki/Bracket_(mathematics)#Intervals">check it out here</a>.
 
-Also, a note about the `@batt_color_...` options: `@batt_color_..._primary_...` options are what will be displayed in the main `bg` or `fg` format strings you choose - e.g. if you use `#{battery_color_bg}`, the `@batt_color_..._primary_...` colors you choose will be the background. Likewise, the corresponding `@batt_color_..._secondary_...` color will be the foreground.
+Also, a note about the `@batt_color_...` options: `@batt_color_..._primary_...` options are what will be displayed in the main `bg` or `fg` format strings you choose - e.g. if you use `#{battery_color_bg}`, the `@batt_color_..._primary_...` colors you choose will be the background. Likewise, the corresponding `@batt_color_..._secondary_...` color will be the foreground. There are also options to set extra tmux styling beside colors, `blink` for example (see STYLE in `man tmux` for details), which have prefix `batt_extra_style_status_*`.
 
 Level of Charge Colors:
 
@@ -143,6 +143,23 @@ Status Icons:
  - discharging (`@batt_icon_status_discharging`): '🔋'
  - attached (`@batt_icon_status_attached`): '⚠️'
  - unknown (`@batt_icon_status_unknown`): '?'
+
+Extra styles:
+
+ - tier 8 \[95%-100%] (`@batt_extra_style_charge_tier8`): ''
+ - tier 7 \[80%-95%) (`@batt_extra_style_charge_tier7`): ''
+ - tier 6 \[65%-80%) (`@batt_extra_style_charge_tier6`): ''
+ - tier 5 \[50%-65%) (`@batt_extra_style_charge_tier5`): ''
+ - tier 4 \[35%-50%) (`@batt_extra_style_charge_tier4`): ''
+ - tier 3 \[20%-35%) (`@batt_extra_style_charge_tier3`): ''
+ - tier 2 (5%-20%) (`@batt_extra_style_charge_tier2`): ''
+ - tier 1 \[0%-5%] (`@batt_extra_style_charge_tier1`): ''
+ - charged (`@batt_extra_style_status_charged`): ''
+ - charging (`@batt_extra_style_status_charging`): ''
+ - discharging (`@batt_extra_style_status_discharging`): ''
+ - attached (`@batt_extra_style_status_attached`): ''
+ - unknown (`@batt_extra_style_status_unknown`): ''
+ 
 
 #### Changing the Defaults
 

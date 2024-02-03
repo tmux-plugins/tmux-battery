@@ -28,6 +28,12 @@ color_status_secondary_discharging_default='colour0'
 color_status_secondary_attached_default='colour0'
 color_status_secondary_unknown_default='colour0'
 
+extra_style_status_charged=''
+extra_style_status_charging=''
+extra_style_status_discharging=''
+extra_style_status_attached=''
+extra_style_status_unknown=''
+
 # colors are set as script global variables
 get_color_status_settings() {
 	color_status_primary_charged=$(get_tmux_option "@batt_color_status_primary_charged" "$color_status_primary_charged_default")
@@ -40,6 +46,12 @@ get_color_status_settings() {
 	color_status_secondary_discharging=$(get_tmux_option "@batt_color_status_secondary_discharging" "$color_status_secondary_discharging_default")
 	color_status_secondary_attached=$(get_tmux_option "@batt_color_status_secondary_attached" "$color_status_secondary_attached_default")
 	color_status_secondary_unknown=$(get_tmux_option "@batt_color_status_secondary_unknown" "$color_status_secondary_unknown_default")
+
+	extra_style_status_charged=$(get_tmux_option "@batt_extra_style_status_charged" "")
+	extra_style_status_charging=$(get_tmux_option "@batt_extra_style_status_charging" "")
+	extra_style_status_discharging=$(get_tmux_option "@batt_extra_style_status_discharging" "")
+	extra_style_status_attached=$(get_tmux_option "@batt_extra_style_status_attached" "")
+	extra_style_status_unknown=$(get_tmux_option "@batt_extra_style_status_unknown" "")
 }
 
 print_color_status() {
@@ -52,15 +64,15 @@ print_color_status() {
 	fi
 	local status="$2"
 	if [[ $status =~ (charged) || $status =~ (full) ]]; then
-		printf "#[$plane_primary=$color_status_primary_charged${color_status_secondary_charged:+",$plane_secondary=$color_status_secondary_charged"}]"
+		printf "#[$plane_primary=$color_status_primary_charged${color_status_secondary_charged:+",$plane_secondary=$color_status_secondary_charged",$extra_style_status_charged}]"
 	elif [[ $status =~ (^charging) ]]; then
-		printf "#[$plane_primary=$color_status_primary_charging${color_status_secondary_charging:+",$plane_secondary=$color_status_secondary_charging"}]"
+		printf "#[$plane_primary=$color_status_primary_charging${color_status_secondary_charging:+",$plane_secondary=$color_status_secondary_charging",$extra_style_status_charging}]"
 	elif [[ $status =~ (^discharging) ]]; then
-		printf "#[$plane_primary=$color_status_primary_discharging${color_status_secondary_discharging:+",$plane_secondary=$color_status_secondary_discharging"}]"
+		printf "#[$plane_primary=$color_status_primary_discharging${color_status_secondary_discharging:+",$plane_secondary=$color_status_secondary_discharging"},$extra_style_status_discharging]"
 	elif [[ $status =~ (attached) ]]; then
-		printf "#[$plane_primary=$color_status_primary_attached${color_status_secondary_attached:+",$plane_secondary=$color_status_secondary_attached"}]"
+		printf "#[$plane_primary=$color_status_primary_attached${color_status_secondary_attached:+",$plane_secondary=$color_status_secondary_attached"},$extra_style_status_attached]"
 	else
-		printf "#[$plane_primary=$color_status_primary_unknown${color_status_secondary_unknown:+",$plane_secondary=$color_status_secondary_unknown"}]"
+		printf "#[$plane_primary=$color_status_primary_unknown${color_status_secondary_unknown:+",$plane_secondary=$color_status_secondary_unknown"},$extra_style_status_unknown]"
 	fi
 }
 
