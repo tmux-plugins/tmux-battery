@@ -32,12 +32,17 @@ is_wsl() {
 }
 
 command_exists() {
-	local command="$1"
-	type "$command" >/dev/null 2>&1
+	local command
+	for command; do
+		type "$command" >/dev/null 2>&1
+		(($? == 0)) || return $?
+	done
 }
 
 battery_status() {
-	if is_wsl; then
+	if command_exists "termux-battery-status" "jq"; then
+		termux-battery-status | jq -r '.status' | awk '{printf("%s%", tolower($1))}'
+	elif is_wsl; then
 		local battery
 		battery=$(find /sys/class/power_supply/*/status | tail -n1)
 		awk '{print tolower($0);}' "$battery"
@@ -49,8 +54,6 @@ battery_status() {
 		local battery
 		battery=$(upower -e | grep -E 'battery|DisplayDevice'| tail -n1)
 		upower -i $battery | awk '/state/ {print $2}'
-	elif command_exists "termux-battery-status"; then
-		termux-battery-status | jq -r '.status' | awk '{printf("%s%", tolower($1))}'
 	elif command_exists "apm"; then
 		local battery
 		battery=$(apm -a)
