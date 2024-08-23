@@ -106,7 +106,11 @@ upower_battery_remaining_time() {
 }
 
 acpi_battery_remaining_time() {
-	acpi -b | grep -m 1 -Eo "[0-9]+:[0-9]+:[0-9]+"
+	regex="[0-9]+:[0-9]+"
+	if ! $short; then
+		regex="$regex:[0-9]+"
+	fi
+	acpi -b | grep -m 1 -Eo "$regex"
 }
 
 print_battery_remain() {
