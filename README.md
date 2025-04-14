@@ -144,6 +144,17 @@ Status Icons:
  - attached (`@batt_icon_status_attached`): '⚠️'
  - unknown (`@batt_icon_status_unknown`): '?'
 
+#### Enabled
+
+If you run  `battery_enabled.tmux` from the top-level of the repo, it will setup a `@battery_enabled` variable, that can be used to selectively display the battery based on whether or not a battery is available or not.
+
+```tmux
+run-shell ~/clone/path/battery_enabled.tmux
+# for example, if using catppuccin:
+set -agF status-right "#{?#{#{==:#{E:@battery_exists},true}},#{E:@catppuccin_status_battery},}"
+run-shell ~/clone/path/battery.tmux
+```
+
 #### Changing the Defaults
 
 All efforts have been made to make sane defaults, but if you wish to change any of them, add the option to `.tmux.conf`. For example:
