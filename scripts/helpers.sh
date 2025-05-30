@@ -24,7 +24,7 @@ is_chrome() {
 
 is_wsl() {
 	version=$(</proc/version)
-	if [[ "$version" == *"Microsoft"* || "$version" == *"microsoft"* ]]; then
+	if [[ "$version" == *"Linux"* || "$version" == *"Microsoft"* || "$version" == *"microsoft"* ]]; then
 		return 0
 	else
 		return 1

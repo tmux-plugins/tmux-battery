@@ -115,7 +115,11 @@ acpi_battery_remaining_time() {
 
 print_battery_remain() {
 	if is_wsl; then
-		echo "?"	# currently unsupported on WSL
+		local charge_full charge_now current_now
+		charge_full=$(find /sys/class/power_supply/*/charge_full | tail -n1 | xargs cat)
+		charge_now=$(find /sys/class/power_supply/*/charge_now | tail -n1 | xargs cat)
+		current_now=$(find /sys/class/power_supply/*/current_now | tail -n1 | xargs cat)
+		echo $charge_full $charge_now $current_now | awk '{num=($1-$2)/$3; printf "%02d:%02d:%02d", int(num), int(60*num%60), int(3600*num%60)}'
 	elif command_exists "pmset"; then
 		pmset_battery_remaining_time
 	elif command_exists "acpi"; then
