@@ -110,8 +110,9 @@ acpi_battery_remaining_time() {
 	if ! $short; then
 		regex="$regex:[0-9]+"
 	fi
-	acpi -b | grep -m 1 -Eo "$regex"
+	acpi -b | grep -v " 0%" | grep -m 1 -Eo "$regex"
 }
+
 
 print_battery_remain() {
 	if is_wsl; then
