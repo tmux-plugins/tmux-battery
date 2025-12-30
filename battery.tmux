@@ -58,7 +58,10 @@ update_tmux_option() {
 }
 
 main() {
-	update_tmux_option "status-right"
-	update_tmux_option "status-left"
+	local interpolated_options="$(get_tmux_option "@plugin_interpolated_options" "status-right status-left")"
+	for interpolated_option in $interpolated_options
+	do
+		update_tmux_option $interpolated_option
+	done
 }
 main
