@@ -30,11 +30,11 @@ command_exists() {
 battery_status() {
 	if command_exists "pmset"; then
 		RES=`pmset -g batt | awk -F '; *' 'NR==2 { print $2 }'`
-        if [ "$RES" = "" ];then
-            echo "charged"
-        else
-            echo "$RES"
-        fi
+		if [ -z "$RES" ]; then
+			echo "charged"
+		else
+			echo "$RES"
+		fi
 	elif command_exists "acpi"; then
 		acpi -b | awk '{gsub(/,/, ""); print tolower($3); exit}'
 	elif command_exists "upower"; then
