@@ -31,7 +31,7 @@ battery_status() {
 	if command_exists "pmset"; then
 		RES=`pmset -g batt | awk -F '; *' 'NR==2 { print $2 }'`
         if [ "$RES" = "" ];then
-            echo "Now drawing from 'AC Power'\n-InternalBattery-0 100%; charged; 0:00 remaining"
+            echo "charged"
         else
             echo "$RES"
         fi
