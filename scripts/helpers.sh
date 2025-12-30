@@ -29,7 +29,7 @@ command_exists() {
 
 battery_status() {
 	if command_exists "pmset"; then
-		RES=`pmset -g batt | awk -F '; *' 'NR==2 { print $2 }'`
+		RES=$(pmset -g batt | awk -F '; *' 'NR==2 { print $2 }')
 		if [ -z "$RES" ]; then
 			echo "charged"
 		else
