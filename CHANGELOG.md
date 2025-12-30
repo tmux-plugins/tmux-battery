@@ -1,13 +1,20 @@
 # Changelog
 
-### master
-- Fixed `#{battery_graph}` to actually display graph (@rux616)
-- High-granularity icons and colors added. (@rux616)
-- Changed preferred order of utility applications to be `pmset` -> `acpi` -> `upower` -> `termux-battery-status` due to CPU usage issues with `upower` (2019-03-05) (@rux616)
-- Added `#{battery_status_bg}` feature (@RyanFrantz) 
-- Added multibattery output support for `upower` (@futuro)
-- Added Chromebook support (@forkjoseph)
-- Added battery graph, simplify interpolation (@levens)
+### v2.0.0, 2025-12-30
+- Added `#{battery_charging_watts}` format string for displaying current watts supplied on macOS
+- Added `#{battery_color_bg}`, `#{battery_color_fg}` format strings for dynamic color based on charge/status
+- Added `#{battery_color_charge_bg}`, `#{battery_color_charge_fg}` for colors based solely on charge level
+- Added `#{battery_color_status_bg}`, `#{battery_color_status_fg}` for colors based solely on battery status
+- Added `#{battery_icon_charge}`, `#{battery_icon_status}` for granular icon control
+- Added 8-tier charge level icons and colors with full customization support
+- Added `#{battery_graph}` to display battery as a bar graph
+- Added `@batt_remain_short` option to shorten remaining time display
+- Added WSL (Windows Subsystem for Linux) support
+- Added OpenBSD `apm` support
+- Added `battery_enabled.tmux` script for conditionally showing battery
+- Fixed battery graph display
+- Removed deprecated `#{battery_status_bg}` and `#{battery_status_fg}` format strings
+- Changed preferred order of utility applications to: pmset → acpi → upower → termux-battery-status due to CPU usage issues with upower
 
 ### v1.2.0, 2016-09-24
 - show output for `#{battery_remain}` interpolation only if the battery is
