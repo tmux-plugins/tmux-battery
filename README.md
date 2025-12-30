@@ -52,7 +52,7 @@ If format strings are added to `status-right`, they should now be visible.
 Add any of the supported format strings (see below) to the `status-right` tmux option in `.tmux.conf`. Example:
 
 ```tmux
-set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percentage} #{battery_remain} | %a %h-%d %H:%M '
+set -g status-right '#{battery_color_bg} Batt: #{battery_icon} #{battery_percentage} #{battery_remain} | %a %h-%d %H:%M '
 ```
 
 ### Supported Format Strings
@@ -69,7 +69,7 @@ set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percen
  - `#{battery_icon_status}` - will display a battery status icon
  - `#{battery_percentage}` - will show battery percentage
  - `#{battery_remain}` - will show remaining time of battery charge\*
- = `#{battery_charging_watts}` - will display the current watts supplied (currently supported only on OSX)
+ - `#{battery_charging_watts}` - will display the current watts supplied (currently supported only on macOS)
 
 \* These format strings can be further customized via options as described below.
 
