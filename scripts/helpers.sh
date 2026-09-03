@@ -41,6 +41,8 @@ command_exists() {
 battery_status() {
 	if command_exists "pmset"; then
 		pmset -g batt | awk -F '; *' 'NR==2 { print $2 }'
+	elif command_exists "termux-battery-status" "jq"; then
+		termux-battery-status | jq -er '.status | ascii_downcase'
 	elif command_exists "acpi"; then
 		acpi -b | awk '{gsub(/,/, ""); print tolower($3); exit}'
 	elif command_exists "upower"; then
@@ -55,8 +57,6 @@ battery_status() {
 		elif [ $battery -eq 1 ]; then
 			echo "charging"
 		fi
-	elif command_exists "termux-battery-status" "jq"; then
-		termux-battery-status | jq -er '.status | ascii_downcase'
 	elif is_wsl; then
 		local battery
 		battery=$(find /sys/class/power_supply/*/status | tail -n1)
