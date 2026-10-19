@@ -12,19 +12,19 @@ print_battery_percentage() {
 		acpi -b | grep -v " 0%" | grep -m 1 -Eo "[0-9]+%"
 	elif command_exists "upower"; then
         # use DisplayDevice if available otherwise battery
-		local battery=$(upower -e | grep -E 'battery|DisplayDevice'| tail -n1)
+		local battery=$(cached_upower -e | grep -E 'battery|DisplayDevice'| tail -n1)
 		if [ -z "$battery" ]; then
 			return
 		fi
-		local percentage=$(upower -i $battery | awk '/percentage:/ {print $2}')
+		local percentage=$(cached_upower -i $battery | awk '/percentage:/ {print $2}')
 		if [ "$percentage" ]; then
 			echo "$(float2int $percentage)%"
 			return
 		fi
 		local energy
 		local energy_full
-		energy=$(upower -i $battery | awk -v nrg="$energy" '/energy:/ {print nrg+$2}')
-		energy_full=$(upower -i $battery | awk -v nrgfull="$energy_full" '/energy-full:/ {print nrgfull+$2}')
+		energy=$(cached_upower -i $battery | awk -v nrg="$energy" '/energy:/ {print nrg+$2}')
+		energy_full=$(cached_upower -i $battery | awk -v nrgfull="$energy_full" '/energy-full:/ {print nrgfull+$2}')
 		if [ -n "$energy" ] && [ -n "$energy_full" ]; then
 			echo $energy $energy_full | awk '{printf("%d%%", ($1/$2)*100)}'
 		fi
