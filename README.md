@@ -79,11 +79,16 @@ set -g status-right '#{battery_color_bg} Batt: #{battery_icon} #{battery_percent
 
  - `@batt_remain_short`: 'true' / 'false' - This will shorten the time remaining (when charging or discharging) to `~H:MM`.
 
+`upower` (Linux)
+
+ - `@batt_upower_cache_ttl`: seconds - Every attached tmux client runs the battery scripts on each status refresh, and each `upower` call is a new D-Bus client of `upowerd`. The output of `upower` is cached for this many seconds. `0` disables the cache.
+
 ### Defaults
 
 #### Options
 
  - `@batt_remain_short`: 'false'
+ - `@batt_upower_cache_ttl`: '15'
 
 #### Icons/Colors
 

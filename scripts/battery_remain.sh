@@ -79,10 +79,10 @@ pmset_battery_remaining_time() {
 }
 
 upower_battery_remaining_time() {
-	battery=$(upower -e | grep -E 'battery|DisplayDevice'| tail -n1)
+	battery=$(cached_upower -e | grep -E 'battery|DisplayDevice'| tail -n1)
 	if battery_discharging; then
 		local remaining_time
-		remaining_time=$(upower -i "$battery" | grep -E '(remain|time to empty)')
+		remaining_time=$(cached_upower -i "$battery" | grep -E '(remain|time to empty)')
 		if $short; then
 			echo "$remaining_time" | awk '{printf "%s %s", $(NF-1), $(NF)}'
 		else
@@ -96,7 +96,7 @@ upower_battery_remaining_time() {
 		fi
 	else
 		local remaining_time
-		remaining_time=$(upower -i "$battery" | grep -E 'time to full')
+		remaining_time=$(cached_upower -i "$battery" | grep -E 'time to full')
 		if $short; then
 			echo "$remaining_time" | awk '{printf "%s %s", $(NF-1), $(NF)}'
 		else
